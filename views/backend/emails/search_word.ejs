@@ -1,0 +1,97 @@
+<%- include('../layouts/header'); %>
+    <div id="wrapper">
+        <%- include('../layouts/sidebar'); %>
+            <div id="wrapper_primary">
+                <!-- content -->
+                <div class="rows">
+                    <%- include('../layouts/breadcrumb'); %>
+                  
+                </div>
+                <div class="rows">
+                    <table class="table table-bordered table-striped wrap_data">
+                        <thead>
+                            <tr>
+                                <!-- <th style="text-align:center;width:25px;">
+                                    <input type="checkbox" id="1">
+                                </th> -->
+                                <th style="width:30px;">STT</th>
+                                <th>Kanji</th>
+                                <th>Hiragana</th>
+                                <th>Katakana</th>
+                                <th>Romaji</th>
+                                <th>Ý nghĩa</th>
+                                <th style="width:95px;text-align:center;">Tùy chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-words">
+
+                            <% 
+                            if(server_data_words_json!='') {
+                            var data_words = JSON.parse(server_data_words_json);
+                            var i = 1;
+                            
+                            data_words.forEach(function(index){ %>
+                                <tr>
+                                    <!-- <td style="text-align:center;">
+                                        <input type="checkbox" id="<%= index._id %>">
+                                    </td> -->
+                                    <td style="text-align:center;"><%= i %></td>
+                                    <td>
+                                        <% if (index.kanji) { %><%= index.kanji %><% } %>
+                                    </td>
+                                    <td>
+                                        <% if (index.hiragana) { %><%= index.hiragana %><% } %>
+                                    </td>
+                                    <td>
+                                        <% if (index.katakana) { %><%= index.katakana %><% } %>
+                                    </td>
+                                    <td>
+                                        <% if (index.romaji) { %><%= index.romaji %><% } %>
+                                    </td>
+                                    <td>
+                                        <% (index.means).forEach(function(index_mean){ %>
+                                           
+                                            <p>
+                                                <i class="fa fa-star" aria-hidden="true" style="color:#d9534f;"></i>
+                                                <span contenteditable="false">
+                                                    <% if (index_mean.mean) { %><%= index_mean.mean %><% } %>
+                                                </span>
+                                                <a style="color:#d9534f" data-toggle="tooltip" data-placement="right" title="<% if (index_mean.type_word) { %><%= index_mean.type_word %><% } %>"><% if (index_mean.type_word) { %>[<%= index_mean.type_word %>]<% } %></a>
+                                            </p>
+                                          
+                                            <% }); %>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <a href="/backend/word/edit/<%= index._id %>" target="_blank" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top"
+                                            title="Xem chi tiết">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="/backend/word/edit/<%= index._id %>" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top"
+                                            title="Chỉnh sửa">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="/backend/word/delete/<%= index._id %>" onClick="return confirm('Bạn chắc chắn ?')" class="btn btn-danger btn-xs"
+                                            data-toggle="tooltip" data-placement="top" title="Xóa">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% i++; %>
+                                <% })} else { %>
+asdasd
+
+
+                               <% }; %>
+                        </tbody>
+                    </table>
+                </div>
+               
+                <!-- end content -->
+            </div>
+           
+
+            <section></section>
+            <!-- end section -->
+
+
+            <%- include('../layouts/footer'); %>

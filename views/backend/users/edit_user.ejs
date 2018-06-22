@@ -1,0 +1,167 @@
+<%- partial('../layouts/header') %>
+    <div id="wrapper">
+        <%- partial('../layouts/sidebar') %>
+            <div id="wrapper_primary">
+                <!-- content -->
+                <div class="rows">
+                    <%- partial('../layouts/breadcrumb') %>
+                </div>
+                <div class="rows">
+                        <% var data_user = JSON.parse(data_user_json);
+                        if(data_user.length > 0) {
+                        data_user.forEach(function(index){ %>
+                    <form action="<%= get_base_url_admin() %>/user/update" method="POST" enctype="multipart/form-data" id="form_update_user">
+                        <input type="hidden" name="id" value="<% if (index.id) { %><%= index.id %><% } %>">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Tài khoản</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="username" id="username" autocomplete="off" readonly value="<% if (index.username) { %><%= index.username %><% } %>"
+                                        data-toggle="tooltip" data-placement="top" title="Tài khoản không thể thay đổi được" data-original-title="Tài khoản không thể thay đổi được">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Họ và tên</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="display_name" id="display_name" autocomplete="off" value="<% if (index.display_name) { %><%= index.display_name %><% } %>">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                        <label class="control-label col-sm-3">Email</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" class="form-control" name="email" id="email" required autocomplete="off" value="<% if (index.email) { %><%= index.email %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+
+
+                                    <% if(req.session.me) {
+                                        var data_user_session = JSON.parse(req.session.me); if(data_user_session!=null && data_user_session.length > 0) {
+                                        data_user_session.forEach(function(index_session){ %>
+
+                                            <% if (index_session.role && (index_session.role==1 || index_session.role==0)) { } else { %>
+
+                                <div class="form-group">
+                                        <label class="control-label col-sm-3">Quyền</label>
+                                        <div class="col-sm-9">
+                                            <select name="role" id="role" class="form-control">
+                                                            <% if (index_session.role && index_session.role==3) { %>
+                                                                <option value="0" <% if (index.role && index.role==0) { %> selected <% } %>>Khách</option>
+                                                                <option value="1" <% if (index.role && index.role==1) { %> selected <% } %>>Biên tập viên</option>
+                                                                <option value="2" <% if (index.role && index.role==2) { %> selected <% } %>>Quản trị viên</option>
+                                                                <% if(index_session.id && (index_session.id==index.id)) { %>
+                                                                <option value="3" <% if (index.role && index.role==3) { %> selected <% } %>>ROOT</option>
+                                                                <% } %>
+                                                            <% } else if (index_session.role && index_session.role==2) { %>
+                                                                <option value="0" <% if (index.role && index.role==0) { %> selected <% } %>>Khách</option>
+                                                                <option value="1" <% if (index.role && index.role==1) { %> selected <% } %>>Biên tập viên</option>
+                                                                <% if(index_session.id && (index_session.id==index.id)) { %>
+                                                                <option value="2" <% if (index.role && index.role==2) { %> selected <% } %>>Quản trị viên</option>
+                                                                <% } %>
+                                                            <% } %>
+                                            </select>
+                                           
+                                        </div>
+                                        <div class="clearfix"></div>
+                                </div>
+
+                                <% } %>
+                                <% });}} %>
+
+                                <div class="form-group">
+                                        <div class="col-sm-12">
+                                <a href="javascript:void(0)" data-toggle="collapse" data-target="#change_password" class="btn btn-primary">
+                                        <i class="fa fa-key" aria-hidden="true"></i> Đổi mật khẩu</a>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+
+                                <div id="change_password" class="collapse">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Mật khẩu</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" name="password" id="password"  autocomplete="off">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Xác nhận mật khẩu</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" name="password_confirm" id="password_confirm"  autocomplete="off">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <hr>
+                            </div>
+                               
+                                
+                             
+                               
+
+
+
+
+
+                                <!-- <div class="form-group">
+                                        <label class="control-label col-sm-3">Ảnh đại diện</label>
+                                        <div class="col-sm-9">
+                                            <div class="user_thumbnail">
+                                                <span id="del_thumbnail">
+                                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                </span>
+                                                <input class="input-file" accept="image/*" id="thumbnail" name="thumbnail" type="file" onChange="loadFile(event)">
+                                                <img  id="output_avatar" class="img-thumbnail"  alt="Thêm ảnh"> 
+                                            </div>
+                                            <small style="font-style:italic;">Bấm vào hình ảnh để thêm mới hoặc cập nhật</small>
+                                            <br>
+                                            <script>
+                                                var loadFile = function (event) {
+                                                    var output = document.getElementById('output_avatar'); output.src = URL.createObjectURL(event.target.files[0]);
+                                                    var thumbnail = document.getElementById('thumbnail'); thumbnail.value = URL.createObjectURL(event.target.files[0]);
+                                                };
+                                                $('#del_thumbnail').click(function(){
+                                                    $('#output_avatar').attr('src', '');
+                                                    $('#thumbnail').val('');
+                                                });
+                                            </script>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div> -->
+
+                    
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-xs-12">
+                        <hr>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i> Cập nhật thông tin</button>
+                        <a href="javascript:void(0)" class="btn btn-default" id="btn_cancel">
+                            <i class="fa fa-ban" aria-hidden="true"></i> Hủy</a>
+                    </div>
+                    </div>
+                    </form>
+                    <% }) } %>
+                </div>
+                <!-- end content -->
+            </div>
+            <section></section>
+            <!-- end section -->
+            <script src="<%= get_base_url_admin() %>/js/focus_last_user.js"></script>
+            <script>
+            $('#btn_cancel').click(function () {
+                if(confirm('Đang có dữ liệu trong khung. Bạn có chắc chắn hủy?')) {
+                    location.reload();
+                }
+                });
+            </script>
+            <%- partial('../layouts/footer') %>

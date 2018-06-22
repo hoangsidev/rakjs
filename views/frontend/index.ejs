@@ -1,0 +1,266 @@
+<%- partial('layouts/header_index') %>
+  <!-- primary navigation -->
+  <div class="navigation-wrapper">
+    <div class="nav-user-contact">
+      <span class="nav-item nav-user-wrap">
+
+        
+        
+
+        <% if(req.session.me) {
+                                                        
+          var data_user_session = JSON.parse(req.session.me)
+
+          if(data_user_session!=null && data_user_session.length > 0) {
+
+              for ( var i in data_user_session ) { %>
+                 
+                  <div class="sidebox-cont sidebox-cont1">  Chào: <%- data_user_session[i].display_name %> </div>
+                  <a href="./logout?url=<%- req.url %>" class="signout-btn hover" onclick="return confirm('Bạn muốn đăng xuất !?')" style="z-index: 800;">Đăng xuất</a>
+            <%  }
+                  
+          }
+
+      %>
+         
+     <% }else{ %>
+
+      <a class="nav-user hover" href="javascript:void(0)" data-toggle="modal" data-target="#login_gopy">
+          <i class="fa fa-user-o" aria-hidden="true"></i>
+          <span class="nav-user-name">Đăng nhập</span>
+        </a>
+
+     <% } %>  
+
+
+      </span>
+      <span class="nav-item nav-contact-wrap">
+        <a class="nav-contact hover" href="contact">
+          <i class="fa fa-envelope-o" aria-hidden="true"></i>
+          <span class="nav-user-cont">Liên Hệ</span>
+        </a>
+      </span>
+    </div>
+    <div class="app-navigation  col-xs-push-12">
+      <div class="toogle-nav hover">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </div>
+      <div class="app-item">
+        <a class="notclick" href="#" title="App iOS">
+          <img src="frontend/images/ico-apple.png" alt="iOS">
+          <br>
+          <span>iOS</span>
+        </a>
+      </div>
+      <div class="app-item">
+        <a class="notclick" href="#" title="Android">
+          <img src="frontend/images/ico-android.png" alt="Android">
+          <br>
+          <span>Android</span>
+        </a>
+      </div>
+    </div>
+    <div class="primary-navigation primary-navigation-custom col-xs-pull-12">
+      <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" class="active">
+          <a href="./">
+            <i class="fa fa-search" aria-hidden="true"></i> &nbsp; Tra từ</a>
+        </li>
+        <li role="presentation">
+          <a class="" href="javascript:void(0)">
+            <i class="fa fa-font" aria-hidden="true"></i> &nbsp; Lịch sử</a>
+        </li>
+        <li role="presentation">
+          <a href="sample_sententces">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i> &nbsp; Mẫu câu</a>
+        </li>
+        <li role="presentation">
+          <a href="searchpara">
+            <i class="fa fa-newspaper-o" aria-hidden="true"></i> &nbsp; Đoạn văn</a>
+        </li>
+        <li role="presentation">
+          <a class="notclick" href="#">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp; RakuChat</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- end primary navigation -->
+  <!-- form đăng nhập -->
+  <div id="login_gopy" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" style="padding-left:5px;padding-right:5px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Đăng nhập</h4>
+        </div>
+        <div class="modal-body">
+          <p>Vui lòng đăng nhập để sử dụng chức năng góp ý.</p>
+          <div class="">
+            <form method="POST" action="./login" accept-charset="UTF-8" id="form_login">
+              <input  type="hidden" class="form-control" name="url_current" value="<%- req.url %>">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">&nbsp;
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                </span>
+                <input type="text" name="user_login" id="user_login" class="form-control" placeholder="Tài khoản hoặc email" aria-label="Tài khoản hoặc email"
+                  aria-describedby="basic-addon1" required>
+              </div>
+              <br>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2">
+                  <i class="fa fa-key" aria-hidden="true"></i>
+                </span>
+                <input type="password" name="user_pass" id="user_pass" class="form-control" placeholder="Mật khẩu" aria-label="Mật khẩu"
+                  aria-describedby="basic-addon2" required>
+              </div>
+              <div class="input-group" style="padding:10px 0 10px 0;">
+                <label>
+                  <input type="checkbox" name="remember" id="remember" style="position:relative;top:2px;">&nbsp; Nhớ tài khoản</label>
+              </div>
+              <div class="input-group" style="width:100%;margin-bottom:10px;">
+                <div class="btn-group">
+                 
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                    &nbsp;Đăng nhập</button>
+                </div>
+              </div>
+            </form>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- kết thúc form đăng nhập -->
+  <div class="container-fluid">
+    <div class="wrapper row" id="wrapper">
+      <!-- header -->
+      <header>
+        <h1 hidden>Từ điển Nhật Việt - Rakuji.vn</h1>
+      </header>
+      <!-- end header -->
+      <!-- container -->
+      <!-- section -->
+      <section id="content">
+        <div class="search-group-wrapper">
+          <div class="search-group">
+            <!-- brand -->
+            <div class="brand">
+              <div class="brand-inner">
+                <a href="./" title="Rakuji.vn" class="hover">
+                  <img src="frontend/images/brand.png" alt="Rakuji.vn"> </a>
+              </div>
+            </div>
+            <!-- end brand -->
+            <!-- form search -->
+            <form method="GET" action="./search" accept-charset="UTF-8" role="search" id="form_search" class="form form_draw">
+              <div class="search">
+                <input class="search-input form-control search-custom search-field biginput " id="search autocomplete" placeholder="日本, にほん, nihon, Nhật Bản, ..."
+                  name="word" autocomplete="off" value="" autofocus>
+                <div class="search-del-data search-input-custom deletedata" id="search_del_data">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+                <div class="search-draw-kanji  search-input-custom">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </div>
+                <button type="submit" class="search-sp hover  search-input-custom btn btn-danger" id="submit_search">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+                <div class="kanji-draw-wrap">
+                  <div class="kanji-draw-inner">
+                    <div class="kanji-draw-canvas">
+                      <canvas id="myCanvas" width="500" height="250"></canvas>
+                      <div class="kanji-draw-direct">
+                        <a href="javascript:clearArray();">Clear</a>
+                        <a href="javascript:cUndo();">Back</a>
+                      </div>
+                    </div>
+                    <div class="kanji-draw-result" id="kanji-draw-result"></div>
+                    <span class="close-kanji-draw">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                </div>
+                <!--/kanji-draw-wrap-->
+              </div>
+              <button type="submit" id="btn_search" class="btn_search hover">
+                <img src="frontend/images/ico-btn-search.png" alt="Facebook">
+                <span class="txt_btn_search">Tìm kiếm</span>
+              </button>
+            </form>
+            <!-- end form search -->
+            <div class="clearfix"></div>
+            <!-- advertisement -->
+            <div class="advertisement">
+              <div class="advertisement-item"> Advertisement </div>
+            </div>
+            <!-- end advertisement -->
+          </div>
+        </div>
+      </section>
+      <!-- end section -->
+      <!-- footer -->
+      <footer>
+        <div class="container-fluid">
+          <div class="footer-wrapper row">
+            <!-- footer languages -->
+            <div class="footer-languages">
+              <img src="frontend/images/ico-language.png" alt="Language">&nbsp;
+              <span class="txt-lang-sp">VI</span>
+              <span class="txt-lang-pc">Tiếng Việt
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </div>
+            <!-- end footer languages -->
+            <!-- footer navigation -->
+            <div class="footer-navi">
+              <ul class="nav nav-pills">
+                <li role="presentation">
+                  <a class="notclick" href="#">Thông Tin</a>
+                </li>
+                <li role="presentation">
+                  <a class="notclick" href="#">Hỏi Đáp</a>
+                </li>
+                <li role="presentation">
+                  <a class="" href="contact">Góp Ý</a>
+                </li>
+                <li role="presentation">
+                  <a class="" href="contact">Liên Hệ</a>
+                </li>
+              </ul>
+            </div>
+            <!-- end footer navigation -->
+            <!-- copyright -->
+            <div class="footer-copyright">
+              <p>Copyright © Rakuji. All Rights Reserved.</p>
+            </div>
+            <!-- end copyright -->
+            <div class="footer-social pull-right">
+              <span class="social-item"> KẾT NỐI VỚI CHÚNG TÔI </span>
+              <span class="social-item">
+                <a href="#" title="Facebook" class="hover notclick">
+                  <img src="frontend/images/social-facebook.png" alt="Facebook"> </a>
+              </span>
+              <span class="social-item">
+                <a href="#" title="Google +" class="hover notclick">
+                  <img src="frontend/images/social-google.png" alt="Google +"> </a>
+              </span>
+              <span class="social-item">
+                <a href="/" title="Instagram" class=" notclick hover">
+                  <img src="frontend/images/social-instagram.png" alt="Instagram"> </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- end footer -->
+    </div>
+  </div>
+  <!-- end container -->
+  <%- partial('layouts/footer_index') %>

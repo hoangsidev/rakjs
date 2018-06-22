@@ -1,0 +1,588 @@
+<%- partial('../layouts/header') %>
+    <div id="wrapper">
+        <%- partial('../layouts/sidebar') %>
+            <div id="wrapper_primary">
+                <!-- content -->
+                <div class="rows">
+                    <%- partial('../layouts/breadcrumb') %>
+                </div>
+                <div class="rows">
+                        <% var data_word = JSON.parse(data_word_json);
+                        if(data_word.length > 0) {
+                        data_word.forEach(function(index){ %>
+                    <form action="/backend/word/update" method="POST" id="form_edit">
+                        <input type="hidden" name="id" value="<% if (index.id) { %><%= index.id %><% } %>">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Kanji</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="kanji" id="kanji" autocomplete="off" value="<% if (index.kanji) { %><%= index.kanji %><% } %>" old_value="<% if (index.kanji) { %><%= index.kanji %><% } %>">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Hiragana</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="hiragana" id="hiragana" autocomplete="off" value="<% if (index.hiragana) { %><%= index.hiragana %><% } %>">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-danger btn_del_hiragana" type="button">
+                                                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Katakana</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="katakana" id="katakana" autocomplete="off" value="<% if (index.katakana) { %><%= index.katakana %><% } %>">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-danger btn_del_katakana" type="button">
+                                                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Romaji</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="romaji" id="romaji" autocomplete="off" value="<% if (index.romaji) { %><%= index.romaji %><% } %>">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <a href="javascript:void(0)" data-toggle="collapse" data-target="#options" class="btn btn-primary pull-right">
+                                            <i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm tùy chọn</a>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div id="options" class="collapse">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Onyomi</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="onyomi" id="onyomi" autocomplete="off" value="<% if (index.kanji_options.onyomi) { %><%= index.kanji_options.onyomi %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Kunyomi</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="kunyomi" id="kunyomi" autocomplete="off" value="<% if (index.kanji_options.kunyomi) { %><%= index.kanji_options.kunyomi %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Số nét</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control" name="strokes" id="strokes" autocomplete="off" value="<% if (index.kanji_options.strokes) { %><%= index.kanji_options.strokes %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Trình độ</label>
+                                        <div class="col-sm-8">
+                                            <select name="jlpt" class="form-control">
+                                                <option value="5" <% if(index.kanji_options.jlpt && index.kanji_options.jlpt=='5') { %> selected <% } %>>N5</option>
+                                                <option value="4" <% if(index.kanji_options.jlpt && index.kanji_options.jlpt=='4') { %> selected <% } %>>N4</option>
+                                                <option value="3" <% if(index.kanji_options.jlpt && index.kanji_options.jlpt=='3') { %> selected <% } %>>N3</option>
+                                                <option value="2" <% if(index.kanji_options.jlpt && index.kanji_options.jlpt=='2') { %> selected <% } %>>N2</option>
+                                                <option value="1" <% if(index.kanji_options.jlpt && index.kanji_options.jlpt=='1') { %> selected <% } %>>N1</option>
+                                            </select>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Bộ</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="pinyin" id="pinyin" autocomplete="off" value="<% if (index.kanji_options.pinyin) { %><%= index.kanji_options.pinyin %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Bộ thành phần</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="pinyins" id="pinyins" autocomplete="off" value="<% if (index.kanji_options.pinyins) { %><%= index.kanji_options.pinyins %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <a href="javascript:void(0)" data-toggle="collapse" data-target="#type_verb" class="btn btn-primary pull-right">
+                                            <i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm các thể động từ</a>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div id="type_verb" class="collapse">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Từ điển [辞書]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="jishokei" id="jishokei" autocomplete="off" value="<% if (index.kanji_options.jishokei) { %><%= index.kanji_options.jishokei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Quá khứ [た]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="takei" id="takei" autocomplete="off" value="<% if (index.kanji_options.takei) { %><%= index.kanji_options.takei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Phủ định [未然]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="mizenkei" id="mizenkei" autocomplete="off" value="<% if (index.kanji_options.mizenkei) { %><%= index.kanji_options.mizenkei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Lịch sự [丁寧]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="teineikei" id="teineikei" autocomplete="off" value="<% if (index.kanji_options.mizenkei) { %><%= index.kanji_options.mizenkei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Te [て]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="teikei" id="teikei" autocomplete="off" value="<% if (index.kanji_options.teikei) { %><%= index.kanji_options.teikei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Khả năng [可能]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="kanoukei" id="kanoukei" autocomplete="off" value="<% if (index.kanji_options.kanoukei) { %><%= index.kanji_options.kanoukei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Thụ động [受身]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="ukemitei" id="ukemitei" autocomplete="off" value="<% if (index.kanji_options.ukemitei) { %><%= index.kanji_options.ukemitei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Sai khiến [使役]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="shiekitei" id="shiekitei" autocomplete="off" value="<% if (index.kanji_options.shiekitei) { %><%= index.kanji_options.shiekitei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Sai khiến thụ động [使役受身]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="shieki_ukemitei" id="shieki_ukemitei" autocomplete="off" value="<% if (index.kanji_options.shieki_ukemitei) { %><%= index.kanji_options.shieki_ukemitei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Điều kiện [条件]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="joukentei" id="joukentei" autocomplete="off" value="<% if (index.kanji_options.joukentei) { %><%= index.kanji_options.joukentei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Mệnh lệnh [命令]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="meireitei" id="meireitei" autocomplete="off" value="<% if (index.kanji_options.meireitei) { %><%= index.kanji_options.meireitei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Ý chí [意向]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="ikoutei" id="ikoutei" autocomplete="off" value="<% if (index.kanji_options.ikoutei) { %><%= index.kanji_options.ikoutei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Cấm chỉ [禁止]</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="kinshikei" id="kinshikei" autocomplete="off" value="<% if (index.kanji_options.kinshikei) { %><%= index.kanji_options.kinshikei %><% } %>">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                    </form>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group row">
+                            <label class="control-label col-xs-12">Ý nghĩa</label>
+                            <div id="wrap_mean">
+                                    <% var data_means =  index.means;
+                                    if(data_means!=null && data_means.length > 0) {
+                                    data_means.forEach(function(index_mean){ %>
+                                <div class="form-group mean_item">
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control mean" name="mean[]" autocomplete="off" value="<% if (index_mean.mean) { %><%= index_mean.mean %><% } %>">
+                                    </div>
+                                    <div class="col-xs-2" style="padding-left: 0;">
+                                        <select class="form-control type_word" name="type_word[]">
+                                            <option value="n/a" <% if(index_mean.type_word=='n/a') { %> selected <% } %> >N/A</option>
+                                            <option value="n" <% if(index_mean.type_word=='n') { %> selected <% } %>>Danh từ</option>
+                                            <option value="exp" <% if(index_mean.type_word=='exp') { %> selected <% } %>>Cụm từ</option>
+                                            <option value="n-prep" <% if(index_mean.type_word=='n-prep') { %> selected <% } %>>Danh từ hoặc giới từ</option>
+                                            <option value="prep" <% if(index_mean.type_word=='prep') { %> selected <% } %>>Giới từ</option>
+                                            <option value="adj" <% if(index_mean.type_word=='adj') { %> selected <% } %>>Tính từ</option>
+                                            <option value="exc" <% if(index_mean.type_word=='exc') { %> selected <% } %>>Thán từ</option>
+                                            <option value="adv" <% if(index_mean.type_word=='adv') { %> selected <% } %>>Trạng từ</option>
+                                            <option value="verb-1" <% if(index_mean.type_word=='verb-1') { %> selected <% } %>>Động từ nhóm I</option>
+                                            <option value="verb-2" <% if(index_mean.type_word=='verb-2') { %> selected <% } %>>Động từ nhóm II</option>
+                                            <option value="verb-3" <% if(index_mean.type_word=='verb-3') { %> selected <% } %>>Động từ nhóm III</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-1" style="padding-left: 0;">
+                                        <button class="btn btn-danger btn-block btn_del_mean" type="button">
+                                            <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <% }) } %>
+                            </div>
+                            <div class="col-xs-12">
+                                <a href="javascript:void(0)" class="btn btn-primary pull-right" id="add_mean">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <label class="control-label col-xs-12">Câu ví dụ</label>
+                            <div id="wrap_example">
+                                    <% var data_examples =  index.examples;  if(data_examples!=null && data_examples.length > 0) {
+                                        data_examples.forEach(function(index_example){ %>
+                                <div class="form-group example_item">
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control example" name="example[]" autocomplete="off" value="<% if (index_example.example) { %><%= index_example.example %><% } %>">
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 0;">
+                                        <input type="text" class="form-control mean_exam" name="mean_exam[]" autocomplete="off" value="<% if (index_example.mean_exam) { %><%= index_example.mean_exam %><% } %>">
+                                    </div>
+                                    <div class="col-md-1" style="padding-left: 0;">
+                                        <button class="btn btn-danger btn-block btn_del_example" type="button">
+                                            <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 10px;">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">Furigana</span>
+                                                <input type="text" class="form-control furigana" name="furigana[]" autocomplete="off" value="<% if (index_example.furigana) { %><%= index_example.furigana %><% } %>">
+                                            </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <% }) } %>
+                            </div>
+                            <div class="col-xs-12">
+                                <a href="javascript:void(0)" class="btn btn-primary pull-right" id="add_example">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-xs-12" style="margin-top: 10px;">
+                            <small class="pull-right" style="color: #777;font-style: italic;">Được thêm bởi <strong><% if (index.user_created) { %>
+                                <%= index.user_created %><% } %></strong> (<% if (index.created_at) { %><%= index.created_at %><% } %>), duyệt bởi <strong><% if (index.user_actived) { %><%= index.user_actived %><% } %></strong> (<% if (index.updated_at) { %><%= index.updated_at %><% } %>)</small>
+                            <div class="clearfix"></div>
+                            <hr style="margin-top: 10px;">
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i> Lưu lại</button>
+                            <a href="javascript:void(0)" class="btn btn-default" id="btn_cancel">
+                                    <i class="fa fa-ban" aria-hidden="true"></i> Hủy</a>
+                    </div>
+                    </div>
+                    </form>
+                    <% }) } %>
+                </div>
+                <!-- end content -->
+            </div>
+            <section></section>
+            <!-- end section -->
+            <script src="/backend/js/focus_last.js"></script>
+            <script src="/backend/plugins/kuroshiro/kuroshiro.js"></script>
+            <script>
+               
+
+                $('#form_create input').on('keypress', function (e) {
+                    var key = e.which;
+                    if (key == 13) {
+                        e.preventDefault();
+                        $(':input:eq(' + ($(':input').index(this) + 1) +')').focus(); // focus tới input tiếp theo
+                    }
+                });
+                
+                $('#btn_cancel').click(function () {
+                    if(confirm('Đang có dữ liệu trong khung. Bạn có chắc chắn hủy?')) {
+                        location.reload();
+                    }
+                });
+
+                $('.btn_del_hiragana').click(function () {
+                    $('#hiragana').val(''); 
+                });
+
+                $('.btn_del_katakana').click(function () {
+                    $('#katakana').val(''); 
+                });
+                
+                // Tự động biên dịch hiragana...
+                kuroshiro.init(function (err) {
+                    $('#kanji').blur(function () {
+                        var old_value = $('#kanji').attr('old_value');
+                        var value_kanji = $('#kanji').val();
+                        if (value_kanji != '' && old_value!=value_kanji) {
+                            var result_hiragana = kuroshiro.convert(value_kanji, { to: 'hiragana', mode: 'normal' }); $('#hiragana').val(''); $('#hiragana').val(result_hiragana);
+                            var result_katakana = kuroshiro.convert(value_kanji, { to: 'katakana', mode: 'normal' }); $('#katakana').val(''); $('#katakana').val(result_katakana);
+                            var result_romaji = kuroshiro.convert(value_kanji, { to: 'romaji', mode: 'normal' }); $('#romaji').val(''); $('#romaji').val(result_romaji);
+                            // $('#wrap_mean .mean_item:first-child').find('input').focus();
+                            
+                            $('.btn_del_hiragana').click(function () {
+                                    if(( $('#katakana').val())!='') { 
+                                        $('#hiragana').val(''); 
+                                    } else {
+                                        $('#hiragana').val(''); $('#katakana').val(result_katakana);
+                                    }
+                                // $('#wrap_mean .mean_item:first-child').find('input').focus();
+                            });
+
+                            $('.btn_del_katakana').click(function () {
+                                    if(( $('#hiragana').val())!='') { 
+                                        $('#katakana').val(''); 
+                                    } else {
+                                        $('#katakana').val(''); $('#hiragana').val(result_hiragana);
+                                    }
+                                // $('#wrap_mean .mean_item:first-child').find('input').focus();
+                            });
+                        }
+                    });
+                    $('#kanji').bind('paste', function (e) {
+                        setTimeout(function () {
+                            var old_value = $('#kanji').attr('old_value');
+                            var value_kanji = $('#kanji').val();
+                            if (value_kanji != '' && old_value!=value_kanji) {
+                                var result_hiragana = kuroshiro.convert(value_kanji, { to: 'hiragana', mode: 'normal' }); $('#hiragana').val(''); $('#hiragana').val(result_hiragana);
+                                var result_katakana = kuroshiro.convert(value_kanji, { to: 'katakana', mode: 'normal' }); $('#katakana').val(''); $('#katakana').val(result_katakana);
+                                var result_romaji = kuroshiro.convert(value_kanji, { to: 'romaji', mode: 'normal' }); $('#romaji').val(''); $('#romaji').val(result_romaji);
+                                // $('#wrap_mean .mean_item:first-child').find('input').focus();
+
+                                $('.btn_del_hiragana').click(function () {
+                                    if(( $('#katakana').val())!='') { 
+                                        $('#hiragana').val(''); 
+                                    } else {
+                                        $('#hiragana').val(''); $('#katakana').val(result_katakana);
+                                    }
+                                    // $('#wrap_mean .mean_item:first-child').find('input').focus();
+                                });
+
+                                $('.btn_del_katakana').click(function () {
+                                        if(( $('#hiragana').val())!='') { 
+                                            $('#katakana').val(''); 
+                                        } else {
+                                            $('#katakana').val(''); $('#hiragana').val(result_hiragana);
+                                        }
+                                    // $('#wrap_mean .mean_item:first-child').find('input').focus();
+                                });
+
+                            }
+                        }, 100);
+                    });
+                    // end
+                    $('#hiragana').blur(function () {
+                        var value_hiragana = $('#hiragana').val();
+                        if (value_hiragana != '') {
+                            var result_romaji = kuroshiro.convert(value_hiragana, { to: 'romaji', mode: 'normal' }); $('#romaji').val(''); $('#romaji').val(result_romaji);
+                            // $('#wrap_mean .mean_item:first-child').find('input').focus();
+                        }
+                    });
+                    $('#hiragana').bind('paste', function (e) {
+                        setTimeout(function () {
+                            var value_hiragana = $('#hiragana').val();
+                            if (value_hiragana != '') {
+                                var result_romaji = kuroshiro.convert(value_hiragana, { to: 'romaji', mode: 'normal' }); $('#romaji').val(''); $('#romaji').val(result_romaji);
+                                // $('#wrap_mean .mean_item:first-child').find('input').focus();
+                            }
+                        }, 100);
+                    });
+                    // end
+                    $('#katakana').blur(function () {
+                        var value_katakana = $('#katakana').val();
+                        if (value_katakana != '') {
+                            var result_romaji = kuroshiro.convert(value_katakana, { to: 'romaji', mode: 'normal' }); $('#romaji').val(''); $('#romaji').val(result_romaji);
+                            // $('#wrap_mean .mean_item:first-child').find('input').focus();
+                        }
+                    });
+                    $('#katakana').bind('paste', function (e) {
+                        setTimeout(function () {
+                            var value_katakana = $('#katakana').val();
+                            if (value_katakana != '') {
+                                var result_romaji = kuroshiro.convert(value_katakana, { to: 'romaji', mode: 'normal' }); $('#romaji').val(''); $('#romaji').val(result_romaji);
+                                // $('#wrap_mean .mean_item:first-child').find('input').focus();
+                            }
+                        }, 100);
+                    });
+                    // end
+                    
+                    $('.example').blur(function () {
+                        var value_example = $(this).val();
+                        if (value_example != '') {
+                            var value_furigana_insert = kuroshiro.convert(value_example, { to: 'hiragana', mode: 'furigana' });
+                            value_furigana_insert = value_furigana_insert.replace(/<ruby>/g, '{'); 
+                            value_furigana_insert = value_furigana_insert.replace(/<\/ruby>/g, '}');
+                            value_furigana_insert = value_furigana_insert.replace(/\(/g, '');
+                            value_furigana_insert = value_furigana_insert.replace(/\)/g, '');
+                            value_furigana_insert = value_furigana_insert.replace(/<rt>/g, ':');
+                            value_furigana_insert = value_furigana_insert.replace(/<\/?[^>]+(>|$)/g, '');
+                            var example_item = $(this).closest('.example_item');
+                            example_item.find('.furigana').val(value_furigana_insert); 
+                            // example_item.find('.mean_exam').focus();
+                        }
+                    });
+                    // end
+                    $('.example').bind('paste', function (e) {
+                        setTimeout(function () {
+                            var value_example = $(e.target).val();
+                            if (value_example != '') {
+                                var value_furigana_insert = kuroshiro.convert(value_example, { to: 'hiragana', mode: 'furigana' });
+                                value_furigana_insert = value_furigana_insert.replace(/<ruby>/g, '{'); 
+                                value_furigana_insert = value_furigana_insert.replace(/<\/ruby>/g, '}');
+                                value_furigana_insert = value_furigana_insert.replace(/\(/g, '');
+                                value_furigana_insert = value_furigana_insert.replace(/\)/g, '');
+                                value_furigana_insert = value_furigana_insert.replace(/<rt>/g, ':');
+                                value_furigana_insert = value_furigana_insert.replace(/<\/?[^>]+(>|$)/g, '');
+                                var example_item = $(e.target).closest('.example_item');
+                                example_item.find('.furigana').val(value_furigana_insert); 
+                                // example_item.find('.mean_exam').focus();
+                            }
+                        }, 100);
+                    });
+                    // end
+                    $('#add_example').click(function () {
+                        $('#wrap_example').append(`
+                        <div class="form-group example_item">
+                            <div class="col-md-5">
+                                <input type="text" class="form-control example" name="example[]" autocomplete="off">
+                            </div>
+                            <div class="col-md-6" style="padding-left: 0;">
+                                <input type="text" class="form-control mean_exam" name="mean_exam[]" autocomplete="off">
+                            </div>
+                            <div class="col-md-1" style="padding-left: 0;">
+                                <button class="btn btn-danger btn-block btn_del_example" type="button"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 10px;">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Furigana</span>
+                                        <input type="text" class="form-control furigana" name="furigana[]">
+                                    </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        `);
+                        $('.example').focus();
+                        $('.btn_del_example').click(function(){
+                            $(this).closest('.example_item').find('input[name="sentence[]"]').val('');
+                            $(this).closest('.example_item').find('select[name="mean_ex[]"]').val('');
+                            $(this).closest('.example_item').find('input[name="furigana[]"]').val('');
+                            $(this).closest('.example_item').remove();
+                        });
+
+                        // auto furigana
+                        $('.example').blur(function () {
+                            var value_example = $(this).val();
+                            if (value_example != '') {
+                                var value_furigana_insert = kuroshiro.convert(value_example, { to: 'hiragana', mode: 'furigana' });
+                                value_furigana_insert = value_furigana_insert.replace(/<ruby>/g, '{'); 
+                                value_furigana_insert = value_furigana_insert.replace(/<\/ruby>/g, '}');
+                                value_furigana_insert = value_furigana_insert.replace(/\(/g, '');
+                                value_furigana_insert = value_furigana_insert.replace(/\)/g, '');
+                                value_furigana_insert = value_furigana_insert.replace(/<rt>/g, ':');
+                                value_furigana_insert = value_furigana_insert.replace(/<\/?[^>]+(>|$)/g, '');
+                                var example_item = $(this).closest('.example_item');
+                                example_item.find('.furigana').val(value_furigana_insert); example_item.find('.mean_exam').focus();
+                            }
+                        });
+                        // end
+                        $('.example').bind('paste', function (e) {
+                            setTimeout(function () {
+                                var value_example = $(e.target).val();
+                                if (value_example != '') {
+                                    var value_furigana_insert = kuroshiro.convert(value_example, { to: 'hiragana', mode: 'furigana' });
+                                    value_furigana_insert = value_furigana_insert.replace(/<ruby>/g, '{'); 
+                                    value_furigana_insert = value_furigana_insert.replace(/<\/ruby>/g, '}');
+                                    value_furigana_insert = value_furigana_insert.replace(/\(/g, '');
+                                    value_furigana_insert = value_furigana_insert.replace(/\)/g, '');
+                                    value_furigana_insert = value_furigana_insert.replace(/<rt>/g, ':');
+                                    value_furigana_insert = value_furigana_insert.replace(/<\/?[^>]+(>|$)/g, '');
+                                    var example_item = $(e.target).closest('.example_item');
+                                    example_item.find('.furigana').val(value_furigana_insert); example_item.find('.mean_exam').focus();
+                                }
+                            }, 100);
+                        });
+                        // end auto furigana
+                    });
+                    // end
+                    $('.btn_del_example').click(function(){
+                        $(this).closest('.example_item').find('input[name="sentence[]"]').val('');
+                        $(this).closest('.example_item').find('select[name="mean_ex[]"]').val('');
+                        $(this).closest('.example_item').remove();
+                    });
+                    // end
+                });
+                // Kết thúc tự động biên dịch hiragana...
+                
+                $('#add_mean').click(function () {
+                    $('#wrap_mean').append(`
+                    <div class="form-group mean_item">
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control mean" name="mean[]" autocomplete="off">
+                        </div>
+                        <div class="col-xs-2" style="padding-left: 0;">
+                            <select class="form-control" name="type_word[]">
+                                <option value="n/a">N/A</option>
+                                <option value="n">Danh từ</option>
+                                <option value="exp">Cụm từ</option>
+                                <option value="n-prep">Danh từ hoặc giới từ</option>
+                                <option value="prep">Giới từ</option>
+                                <option value="adj">Tính từ</option>
+                                <option value="exc">Thán từ</option>
+                                <option value="adv">Trạng từ</option>
+                                <option value="verb-1">Động từ nhóm I</option>
+                                <option value="verb-2">Động từ nhóm II</option>
+                                <option value="verb-3">Động từ nhóm III</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-1" style="padding-left: 0;">
+                        <button class="btn btn-danger btn-block btn_del_mean" type="button"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
+                    </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    `);
+                    $('.mean').focus();
+
+                    $('.btn_del_mean').click(function(){
+                        $(this).closest('.mean_item').find('input[name="mean[]"]').val('');
+                        $(this).closest('.mean_item').find('select[name="type_word[]"]').val('');
+                        $(this).closest('.mean_item').remove();
+                    });
+                });
+
+                $('.btn_del_mean').click(function(){
+                    $(this).closest('.mean_item').find('input[name="mean[]"]').val('');
+                    $(this).closest('.mean_item').find('select[name="type_word[]"]').val('');
+                    $(this).closest('.mean_item').remove();
+                });
+            </script>
+            <%- partial('../layouts/footer') %>

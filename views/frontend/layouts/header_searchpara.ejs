@@ -1,0 +1,233 @@
+<%- partial('../inc/functions') %>
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- meta -->
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <!-- end meta -->
+      <!-- style -->
+      
+    <link rel="stylesheet" href="frontend/css/reset.css">
+    <link rel="stylesheet" href="frontend/css/bootstrap.min.css">
+    <link rel="stylesheet" href="frontend/css/font-awesome.min.css">
+    <link rel="stylesheet" href="frontend/css/jPushMenu.css">
+    <link rel="stylesheet" href="frontend/css/master.css">
+    <link rel="stylesheet" href="frontend/css/detail.css">
+    <link rel="stylesheet" href="frontend/css/jquery.fancybox.css">
+    <link rel="shortcut icon" href="frontend/images/favicon.ico" type="image/x-icon">
+      
+      
+     <!-- script -->
+     <script src="frontend/js/jquery-git.js"></script>
+     <script src="frontend/js/jquery.min.js"></script>
+     <script src="frontend/js/bootstrap.min.js"></script>
+     <script src="frontend/js/bootstrap-select.min.js"></script>
+     <script src="frontend/js/jquery.mousewheel-3.0.6.pack.js"></script>
+     <script src="frontend/js/jquery.fancybox.pack.js"></script>
+     <script src="frontend/js/jQuery.highlighter.js"></script>
+     <!-- end script -->  
+        
+      
+      
+      <!-- end sttyle -->
+      <title>Rakuji</title>
+   </head>
+   <body>
+      <div class="overlay-bg"> </div>
+      <div class="wrapper">
+      <!-- container -->
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-xs-push-12">
+               <!-- Left menu element-->
+               <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
+                  <div class="app-navigation app-navigation-child  col-xs-push-12">
+                     <div class="toogle-nav hover"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                     <div class="app-item app-item-contact"> 
+                        <a  href="javascript:void(0)" title="Contact"> <img src="frontend/images/contact-icon.png" alt="contact"></a> 
+                     </div>
+                     <div class="app-item"> <a class="notclick" href="#" title="App iOS"> <img src="frontend/images/ico-apple.png" alt="iOS"><br>
+                        <span>iOS</span> </a> 
+                     </div>
+                     <div class="app-item"> <a class="notclick" href="#" title="Android"> <img src="frontend/images/ico-android.png" alt="Android"><br>
+                        <span>Android</span> </a> 
+                     </div>
+                  </div>
+                  <div class="app-navigation-plus   col-xs-push-12">
+                     <ul class="app-navigation-plus-menu">
+                        <li>
+                           <a  class="hover" href="javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i> Tra cứu</a>
+                        <li>
+                        <li>
+                           <a class="hover" href="javascript:void(0)" ><i class="fa fa-font" aria-hidden="true"></i> Lịch sử</a>
+                        <li>
+                       
+                        
+                        <li>
+                           	<a class="hover" href="./searchpara"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Đoạn văn</a>
+                        <li>
+                        
+                     </ul>
+                  </div>
+                  <!--/app-navigation-plus-->
+                  <div class="search-group search-group-child">
+                     <!-- form search -->
+                     <div class="search-group-child-inner">
+                        
+                        
+                        <form method="GET" action="./search" accept-charset="UTF-8" role="search" id="form_search" class="form form_draw1">
+                        
+                        
+                           <div class="search">
+                              <input name="word" class="search-input" id="search" placeholder="日本, にほん, nihon, Nhật Bản, ..." autocomplete="off" value="" autofocus>
+                              <div class="search-del-data search-input-custom deletedata" id="search_del_data"> <i class="fa fa-times" aria-hidden="true"></i> </div>
+                              <div class="search-draw-kanji1  search-input-custom"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </div>
+                              
+                              <button type="submit" class="search-sp hover  search-input-custom"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                              
+                              
+                              <script src="frontend/js/canvasdraw1.js"></script>	
+                              
+                                    <div class="kanji-draw-wrap kanji-draw-wrap-child">
+                                                       	
+                                                        	<div class="kanji-draw-inner">
+                                                         
+                                                                     <div class="kanji-draw-canvas">
+                                                                            <canvas id="myCanvas1" width="500" height="250"></canvas>
+                                                                             <div class="kanji-draw-direct">
+                                                                             <a href="javascript:clearArray1();">Clear</a>
+                                                                             <a href="javascript:cUndo1();">Back</a>
+                                                                     </div>
+                                                                     </div>
+ 
+                                                                     <div class="kanji-draw-result" id="kanji-draw-result1"></div>
+
+                                                                     <span class="close-kanji-draw"><i class="fa fa-times" aria-hidden="true"></i></span>
+                                                                                                                                        
+                                                             </div>        
+                                                         
+                                                        </div><!--/kanji-draw-wrap-->
+
+                            </div>
+                            
+                             <button type="submit" id="btn_search" class="btn_search hover"><img src="frontend/images/ico-btn-search.png" alt="Facebook"> <span class="txt_btn_search">Tìm kiếm</span></button>
+                            
+                       
+                        </form>
+                         <div class="clearfix"></div>
+                     </div>
+                     <!-- end form search --> 
+                     <div class="clearfix"></div>
+                     <ul class="nav nav-pills nav-style-trans">
+                        <li class="active"><a data-toggle="pill"  class="notclick"  href="#tuvung">Từ vựng &amp; Kanji</a></li>
+                        <li><a data-toggle="pill"  class="notclick" href="#hantu">Hán tự</a></li>
+                        <li><a data-toggle="pill" class="notclick" href="#maucau">Mẫu câu ví dụ</a></li>
+                     </ul>
+                  </div>
+                  <div class="primary-navigation  primary-navigation-child col-xs-pull-12">
+                     <div class="logo-in-menu">
+                        <a class="hover" href="./"><img src="frontend/images/brand.png" alt="Rakuji.vn"></a>
+                        <a class="close-menu hover notclick"><i class="fa fa-close" aria-hidden="true"></i></a>
+                     </div>
+                     <ul class="nav nav-pills nav-stacked">
+                        <li role="presentation"><a class="notclick" href="#"><i class="fa  fa-info-circle" aria-hidden="true"></i> &nbsp; Thông tin</a></li>
+                        <li role="presentation"><a class="presentation-a-plus notclick" href="#"><i class="fa fa-plus fa-plus-plus1" aria-hidden="true"></i> <span class="menu-item-plus1">Yêu cầu <br class="not_in_sp"> bổ sung từ</span></a></li>
+                        <li role="presentation"><a class="" href="javascript:void(0)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp; Góp ý</a></li>
+                        <li role="presentation"><a href="javascript:void(0)"><i class="fa fa-file-text-o" aria-hidden="true"></i> &nbsp; Mẫu câu</a></li>
+                        <li role="presentation"><a class="" href="./searchpara"><i class="fa fa-newspaper-o" aria-hidden="true"></i> &nbsp; Đoạn văn</a></li>
+                     </ul>
+                     <div class="presentation-child">
+                        <span class="social-item-item"> <a href="javascript:void(0)" title="Facebook" class="hover notclick"> <img src="frontend/images/social-facebook.png" alt="Facebook"> </a> </span> 
+                        <span class="social-item-item"> <a href="javascript:void(0)" title="Google +" class="hover notclick"> <img src="frontend/images/social-google.png" alt="Google +"> </a> </span> 
+                        <span class="social-item-item"> <a href="javascript:void(0)" title="Instagram" class="hover notclick"> <img src="frontend/images/social-instagram.png" alt="Instagram"> </a> </span>
+                     </div>
+                  </div>
+               </nav>
+               <!-- End Left menu element-->
+            </div>
+            <div class="col-xs-push-12">
+               <div class="col-xs-12">
+                  <div class="wrapper-child row">
+                     <!-- header -->
+                     <header>
+                        <div class="header-inner header-inner2">
+                           <div class="header-bar">
+                              <div class="header-bar-left">
+                                 <div class="head-btn-menu1">
+                                    <span class="toggle-menu menu-left hover"><i class="fa fa-bars" aria-hidden="true"></i></span>
+                                 </div>
+                                 <ul class="head-btn-menu2">
+                                    <li>
+                                       <a  class="hover" href="./"><i class="fa fa-search" aria-hidden="true"></i> Tra cứu</a>
+                                    </li>
+                                    <li>
+                                       <a class="hover" href="javascript:void(0)" ><i class="fa fa-font" aria-hidden="true"></i> Lịch sử</a>
+                                    </li>
+                                  
+                                    
+                                    
+                                    <li class="mark-note">
+                           					<a class="hover" href="./searchpara"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Dịch đoạn văn</a>
+                        			<li>
+                                    
+                                 </ul>
+                              </div>
+                              <!--/header-bar-left-->
+                              <div class="header-bar-right">
+                                 <div class="head-socials">
+                                    <span class="head-socials-item">
+                                    <a  class="hover notclick" href="#">
+                                    <img src="frontend/images/head-social1.png" alt="Social">
+                                    </a>
+                                    </span>
+                                    <span class="head-socials-item">
+                                    <a  class="hover notclick" href="#">
+                                    <img src="frontend/images/head-social2.png" alt="Social">
+                                    </a>
+                                    </span>
+                                    <span class="head-socials-item">
+                                    <a  class="hover notclick" href="#">
+                                    <img src="frontend/images/head-social3.png" alt="Social">
+                                    </a>
+                                    </span>
+                                 </div>
+                                 <!--/head-socials-->
+                                 <div class="head-apps">
+                                    <span class="head-apps-item">
+                                    <a  class="hover notclick" href="#">
+                                    <img src="frontend/images/head-app1.png" alt="app">
+                                    </a>
+                                    </span>
+                                    <span class="head-apps-item">
+                                    <a  class="hover notclick" href="#">
+                                    <img src="frontend/images/head-app2.png" alt="app">
+                                    </a>
+                                    </span>
+                                 </div>
+                                 <!--/head-apps-->
+                                 <div class="head-trans">
+                                    <div class="footer-languages-child">
+                                       <a class="hover notclick" href="#">
+                                       <img src="frontend/images/ico-language.png" alt="Language">
+                                       &nbsp; <span class="txt-lang-pc1">Tiếng Việt <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                                       </a> 
+                                    </div>
+                                 </div>
+                                 <!--/head-trans-->
+                                 <div class="head-contact">
+                                    <a class="head-contact-pc hover " href="javascript:void(0)"><img src="frontend/images/head-contact.png" alt="Contact"></a>
+                                    <a class="head-contact-sp hover " href="javascript:void(0)"><img src="frontend/images/head-contact1.png" alt="Contact"></a>
+                                 </div>
+                                 <!--/head-contact-->
+                              </div>
+                              <!--/header-bar-right-->
+                           </div>
+                           <!--/header-bar-->
+                        </div>
+                        
+                        
+                        
+                     </header>
+                     <!-- end header -->

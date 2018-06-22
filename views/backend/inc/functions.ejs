@@ -1,0 +1,43 @@
+<% 
+  get_type_word = (value)=>{
+    var result_type_word= 'N/A';
+    if(value=='N/A') { result_type_word = 'N/A'  }
+    if(value=='N') { result_type_word = 'Danh từ'  }
+    if(value=='EXP') { result_type_word = 'Cụm từ'  }
+    if(value=='N-PREP') { result_type_word = 'Danh từ hoặc giới từ'  }
+    if(value=='PREP') { result_type_word = 'Giới từ'  }
+    if(value=='ADJ') { result_type_word = 'Tính từ'  }
+    if(value=='EXC') { result_type_word = 'Thán từ'  }
+    if(value=='ADV') { result_type_word = 'Trạng từ'  }
+    if(value=='VERB-1') { result_type_word = 'Động từ nhóm I'  }
+    if(value=='VERB-2') { result_type_word = 'Động từ nhóm II'  }
+    if(value=='VERB-3') { result_type_word = 'Động từ nhóm III'  }
+    return result_type_word;
+  }
+
+  get_role = (value_role)=>{
+    var result_role = '';
+    if(value_role==0) { result_role = '<span class="label label-default">Khách</span>'  }
+    if(value_role==1) { result_role = '<span class="label label-success">Biên tập viên</span>'  }
+    if(value_role==2) { result_role = '<span class="label label-primary">Quản trị viên</span>'  }
+    if(value_role==3) { result_role = '<span class="label label-danger">ROOT</span>'  }
+    return result_role;
+  }
+  
+  get_base_url_admin = () => {
+    return sails.config.custom.base_url_admin;
+  } 
+ 
+  get_time = (value_time) => {
+    var time = new Date(value_time);
+    var d = time.getDate(); if(d.toString().length == 1) { d =  '0' + d }
+    var m = (time.getMonth() + 1); if(m.toString().length == 1) { m =  '0' + m }
+    var y = time.getFullYear();
+    var g = time.getHours(); if(g.toString().length == 1) { g =  '0' + g }
+    var a = g >= 12 ? 'pm' : 'am';
+    var i = time.getMinutes(); if(i.toString().length == 1) { i =  '0' + i }
+    var the_time = d + '/' + m + '/' + y + ' lúc ' + g + ':' + i + ' ' + a
+    return the_time;
+  }
+
+%>

@@ -1,0 +1,161 @@
+<%- partial('../layouts/header') %>
+    <div id="wrapper">
+        <%- partial('../layouts/sidebar') %>
+            <div id="wrapper_primary">
+                <!-- content -->
+                <div class="rows">
+                    <%- partial('../layouts/breadcrumb') %>
+                </div>
+                <div class="rows">
+                    <form action="<%= get_base_url_admin() %>/user/insert" method="POST" enctype="multipart/form-data" id="form_create_user">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Tài khoản</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="username" id="username" required autocomplete="off">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" name="email" id="email" required autocomplete="off">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Họ và tên</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="display_name" id="display_name" autocomplete="off">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Mật khẩu</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" name="password" id="password" required autocomplete="off"
+                                        data-toggle="tooltip" data-placement="top" title="Sử dụng tối thiếu 8 ký tự" data-original-title="Sử dụng tối thiếu 8 ký tự"
+                                        >
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Xác nhận mật khẩu</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" name="password_confirm" id="password_confirm" required autocomplete="off">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <hr>
+                                
+                             
+
+
+                                <% if(req.session.me) {
+                                    var data_user_session = JSON.parse(req.session.me); if(data_user_session!=null && data_user_session.length > 0) {
+                                    data_user_session.forEach(function(index_session){ %>
+
+                                        <% if (index_session.role && (index_session.role==1 || index_session.role==0)) { } else { %>
+
+                            <div class="form-group">
+                                    <label class="control-label col-sm-3">Quyền</label>
+                                    <div class="col-sm-9">
+                                        <select name="role" id="role" class="form-control">
+ 
+                                                            
+                                                        <% if (index_session.role && index_session.role==3) { %>
+                                                            <option value="0">Khách</option>
+                                                            <option value="1">Biên tập viên</option>
+                                                            <option value="2">Quản trị viên</option>
+                                                            
+                                                        <% } else if (index_session.role && index_session.role==2) { %>
+                                                            <option value="0">Khách</option>
+                                                            <option value="1">Biên tập viên</option>
+                                                            <% } %>
+
+                                               
+
+                                           
+                                        </select>
+                                       
+                                    </div>
+                                    <div class="clearfix"></div>
+                            </div>
+
+                            <% } %>
+                            <% });}} %>
+                               
+
+                               
+
+
+
+                                <div class="form-group">
+                                        <label class="control-label col-sm-3">Ảnh đại diện</label>
+                                        <div class="col-sm-9">
+                                            <div class="user_thumbnail">
+                                                <span id="del_thumbnail">
+                                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                </span>
+                                                <input class="input-file" accept="image/*" id="thumbnail" name="thumbnail" type="file" onChange="loadFile(event)">
+                                                <img  id="output_avatar" class="img-thumbnail"  alt="Thêm ảnh"> 
+                                            </div>
+                                            <small style="font-style:italic;">Bấm vào hình ảnh để thêm mới hoặc cập nhật</small>
+                                            <br>
+                                            <script>
+                                                var loadFile = function (event) {
+                                                    var output = document.getElementById('output_avatar'); output.src = URL.createObjectURL(event.target.files[0]);
+                                                    var thumbnail = document.getElementById('thumbnail'); thumbnail.value = URL.createObjectURL(event.target.files[0]);
+                                                };
+                                                $('#del_thumbnail').click(function(){
+                                                    $('#output_avatar').attr('src', '');
+                                                    $('#thumbnail').val('');
+                                                });
+                                            </script>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                    
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-xs-12">
+                        <hr>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i> Tạo tài khoản</button>
+                        <a href="javascript:void(0)" class="btn btn-default" id="btn_cancel">
+                            <i class="fa fa-ban" aria-hidden="true"></i> Hủy</a>
+                    </div>
+                    </div>
+                    </form>
+                </div>
+                <!-- end content -->
+            </div>
+            <section></section>
+            <!-- end section -->
+            <script>
+            $(window).on('load', function () {
+                $('#username').focus();
+            });
+            $('#btn_cancel').click(function () {
+                    var count_value_input = 0;
+                    $('#form_create_user input').each(function (index) {
+                        var value_input = $(this).val();
+                        if(value_input!='') {
+                            count_value_input++;
+                        }
+                    });
+                    if(count_value_input>0) {
+                        if(confirm('Đang có dữ liệu trong khung. Bạn có chắc chắn hủy?')) {
+                            location.href = '<%= get_base_url_admin() %>/users/page/1';
+                        }
+                    } else {
+                        location.href = '<%= get_base_url_admin() %>/users/page/1';
+                    }
+                });
+            </script>
+            <%- partial('../layouts/footer') %>

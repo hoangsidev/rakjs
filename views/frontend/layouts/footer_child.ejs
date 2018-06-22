@@ -1,0 +1,130 @@
+ <!--Quick search-->
+ <div id="quick-search-box" style="display:none;"></div>
+
+ <span class='highlighter-container'>
+     <div>
+       <a class="quick-search" href="#quick-search-box">
+               <img style="position:absolute;z-index:999" src="frontend/images/quicksearch.png">
+       </a>
+     </div>
+ </span>
+ <!--End Quick search-->
+
+<!-- script -->
+<script src="frontend/plugins/kuroshiro/kuroshiro.js"></script>
+
+<script src="frontend/js/script.js"></script>
+<script src="frontend/js/scripts.js"></script>
+
+<script>
+    $(document).ready(function() {
+        kanji_w_update();
+        hira_update();
+        roma_update();
+        kata_update();
+        mean_typeword_update();
+        example_update();
+
+        //gopythem neu search ko ra
+        add_new_word_kanji();
+        add_new_word_hiragana();
+        add_new_word_katakana();
+        add_new_word_romaji();
+        add_new_word_vi();
+        add_new_word_exam();
+
+        //them mean
+        mean_typeword_insert();
+
+        //su dung vi du
+        example_insert()
+
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        
+    /////////Quick search//////////////
+        $('.wrapper').highlighter({
+	   'selector': '.highlighter-container',
+	   'minWords': 0,
+	   'complete': function (data) { 
+
+        $.ajax({
+			type:"POST",
+			url: "/quicksearch", 
+			data:{value: data},
+			success: function(result){
+                
+                if( result !='' ){
+                    $("#quick-search-box").html(result);
+                }else{
+                    var note = 'Không tìm thấy kết quả!';
+                    $("#quick-search-box").html(note);
+                }
+            }
+            
+         })
+    ///////////////////////////////////////////////////////     
+	  
+            // if( data !='' ){
+            //     $("#quick-search-box").html(data);
+            // }else{
+            //     var note = 'Không tìm thấy kết quả!';
+            //     $("#quick-search-box").html(note);
+            // }
+    /////////////////////////////////////////////////////        
+	   
+	   		  
+	   }
+    });
+    /////////End Quick search//////////////
+
+    });
+</script>
+
+<script>
+    // Tự động biên dịch hiragana...
+    kuroshiro.init(function (err) {
+
+        ////////////
+        //Kanji
+        var value_kanji = $('#kanji').val()
+        if (value_kanji != '') {
+            var result_hiragana = kuroshiro.convert(value_kanji, { to: 'hiragana', mode: 'normal' }); $('#hiragana').attr("value",result_hiragana);
+            var result_katakana = kuroshiro.convert(value_kanji, { to: 'katakana', mode: 'normal' }); $('#katakana').attr("value",result_katakana);
+            var result_romaji = kuroshiro.convert(value_kanji, { to: 'romaji', mode: 'normal' }); $('#romaji').attr("value",result_romaji);
+        }
+
+        //Hiragana
+        var value_hiragana = $('#hiragana').val()
+        if (value_hiragana != '') {
+            var result_romaji = kuroshiro.convert(value_hiragana, { to: 'romaji', mode: 'normal' }); $('#romaji').attr("value",result_romaji);
+        }
+
+        //Katakana
+        var value_katakana = $('#katakana').val();
+        if (value_katakana != '') {
+            var result_romaji = kuroshiro.convert(value_katakana, { to: 'romaji', mode: 'normal' }); $('#romaji').attr("value",result_romaji);
+        }
+
+        ///////////
+
+    });
+    // Kết thúc tự động biên dịch hiragana...
+</script>    
+
+
+<script src="frontend/js/jPushMenu.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $('.toggle-menu').jPushMenu();
+    });
+</script>
+
+
+<!-- end script -->
+</body>
+
+</html>

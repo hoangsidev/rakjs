@@ -1,0 +1,33 @@
+<% if (pages > 0) { %>
+    <ul class="pagination pagination-sm pull-right wrapper_pagination">
+        <% if (current == 1) { %>
+            <li class="disabled"><a>Trang đầu</a></li>
+        <% } else { %>
+            <li><a href="<%= get_base_url_admin() %>/<% if(page_slug) { %><%= page_slug %><% } %>/page/1">Trang đầu</a></li>
+        <% } %>
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+            <li class="disabled"><a>...</a></li>
+        <% } %>
+
+
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+            
+            <% if (i == current) { %>
+                <li class="active"><a><%= i %></a></li>
+            <% } else { %>
+                <li><a href="<%= get_base_url_admin() %>/<% if(page_slug) { %><%= page_slug %><% } %>/page/<%= i %>"><%= i %></a></li>
+            <% } %>
+            <% if (i == Number(current) + 4 && i < pages) { %>
+                <li class="disabled"><a>...</a></li>
+            <% } %>
+        <% } %>
+
+        
+        <% if (current == pages) { %>
+            <li class="disabled"><a>Trang cuối</a></li>
+        <% } else { %>
+            <li><a href="<%= get_base_url_admin() %>/<% if(page_slug) { %><%= page_slug %><% } %>/page/<%= pages %>">Trang cuối</a></li>
+        <% } %>
+    </ul>
+<% } %>

@@ -1,0 +1,2 @@
+jQuery.fn.putCursorAtEnd=function(){return this.each(function(){var t=$(this),n=this;if(t.is(":focus")||t.focus(),n.setSelectionRange){var o=2*t.val().length;setTimeout(function(){n.setSelectionRange(o,o)},1)}else t.val(t.val());this.scrollTop=999999})},
+function(){var t=$("#display_name");t.putCursorAtEnd().on("focus",function(){t.putCursorAtEnd()})}();

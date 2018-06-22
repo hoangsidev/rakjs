@@ -1,0 +1,143 @@
+<%- partial('../../layouts/header') %>
+    <div id="wrapper">
+        <%- partial('../../layouts/sidebar') %>
+            <div id="wrapper_primary">
+                <!-- content -->
+                <div class="rows">
+                    <%- partial('../../layouts/breadcrumb') %>
+                        <%- partial('../../layouts/pagination') %>
+                </div>
+                <div class="rows">
+                    <table class="table table-bordered table-striped wrap_data wrap_data_approvals">
+                        <thead>
+                            <tr>
+                                <!-- <th style="text-align:center;width:25px;">
+                                    <input type="checkbox" id="1">
+                                </th> -->
+                                <th style="width:30px;">STT</th>
+                                <th>Kanji</th>
+                                <th>Hiragana</th>
+                                <th>Katakana</th>
+                                <th>Romaji</th>
+                                <th>Ý nghĩa</th>
+                                <th>Người yêu cầu</th>
+                                
+                                <th style="width:95px;text-align:center;">Tùy chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-words">
+                            <% var data_words = JSON.parse(data_words_json);
+                            if(data_words!=null && data_words.length > 0) {
+                            var i = 1;
+                            data_words.forEach(function(index){ %>
+                                <tr id="<% if (index.id) { %><%= index.id %><% } %>">
+                                    <!-- <td style="text-align:center;">
+                                        <input type="checkbox" id="<%= index.id %>">
+                                    </td> -->
+                                    <td style="text-align:center;">
+                                        <%= i %>
+                                    </td>
+                                    <td style="background: #d9534f; color: #fff">
+                                        <% if (index.kanji) { %>
+                                            <%= index.kanji %>
+                                                <% } %>
+                                                <hr style="margin: 10px 0;">
+
+
+                                                <%  var data_feedback_kanjis =  index.feedback_kanjis;
+                                                if(data_feedback_kanjis!=null && data_feedback_kanjis.length > 0) {
+                                                    data_feedback_kanjis.forEach(function(index_feedback_kanjis){ %>
+                                                    <p>
+                                                        <i class="fa fa-star" aria-hidden="true" style="color:#fff;"></i>
+                                                        <span contenteditable="false">
+                                                            <% if (index_feedback_kanjis.kanji) { %>
+                                                                <%= index_feedback_kanjis.kanji %>
+                                                                    <% } %>
+                                                        </span>
+                                                       
+                                                    </p>
+                                                    <% })} %>
+
+
+
+
+                                    </td>
+                                    <td>
+                                        <% if (index.hiragana) { %>
+                                            <%= index.hiragana %>
+                                                <% } %>
+                                    </td>
+                                    <td>
+                                        <% if (index.katakana) { %>
+                                            <%= index.katakana %>
+                                                <% } %>
+                                    </td>
+                                    <td>
+                                        <% if (index.romaji) { %>
+                                            <%= index.romaji %>
+                                                <% } %>
+                                    </td>
+                                    <td >
+                                        <%  var data_means =  index.means;
+                                        if(data_means!=null && data_means.length > 0) {
+                                            data_means.forEach(function(index_mean){ %>
+                                            <p>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <span contenteditable="false">
+                                                    <% if (index_mean.mean) { %>
+                                                        <%= index_mean.mean %>
+                                                            <% } %>
+                                                </span>
+                                                <a href="javascript:void(0)" style="color:#fff; text-transform: lowercase;" data-toggle="tooltip" data-placement="right" title="<% if (index_mean.type_word) { %>
+                                                    <%= get_type_word(index_mean.type_word) %><% } %>">
+                                                    <% if (index_mean.type_word) { %>[<%= index_mean.type_word %>]<% } %>
+                                                </a>
+                                            </p>
+                                            <% })} %>
+                                    </td>
+                                    <td>
+                                            <% if (index.user_created && index.user_created!=null) { %>
+                                                <%= index.user_created %>
+                                            <% } else { %>
+                                                Khách     
+                                            <% } %> - <% if (index.user_ip && index.user_ip!=null) { %>
+                                                <%= index.user_ip %>
+                                            <% } %> (<small><% if (index.created_at && index.created_at!=null) { %>
+                                                <%= get_time(index.created_at) %>  
+                                            <% } %> </small>)
+                                        </td>
+                                  
+                                    <td style="text-align:center;">
+                                        <a href="<%= get_base_url_admin() %>/feedbacks_kanji/edit/<%= index.id %>" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top"
+                                            title="Xem chi tiết">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                       
+                                      
+                                        
+                                    </td>
+                                </tr>
+                                <% i++; %>
+                                    <% })} else { %>
+
+                                        <tr>
+                                            <td colspan="9" class="text-center">Chưa có kanji mới được góp ý</a></td>
+                                        </tr>
+                                   <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rows">
+                    <%- partial('../../layouts/pagination') %>
+                </div>
+                <!-- end content -->
+            </div>
+            <section></section>
+            <!-- end section -->
+
+            <script>
+                $(window).on('load', function() {
+                    $("#s").focus();
+                })
+            </script>
+            <%- partial('../../layouts/footer') %>

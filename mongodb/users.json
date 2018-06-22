@@ -1,0 +1,231 @@
+{ 
+    "_id" : ObjectId("5acc788fe201de2a90dcea28"), 
+    "username" : "wpadmin", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "Hoang Si", 
+    "password" : "123", 
+    "active" : NumberInt(0), 
+    "created_at" : 1523349647956.0, 
+    "role" : NumberInt(3), 
+    "createdAt" : 1523349647957.0, 
+    "updatedAt" : 1523856701936.0, 
+    "updated_at" : 1523856701936.0
+}
+{ 
+    "_id" : ObjectId("5ad062c675169136d093736e"), 
+    "username" : "12312", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123", 
+    "password" : "123123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523606214400.0, 
+    "role" : NumberInt(2), 
+    "createdAt" : 1523606214401.0, 
+    "updatedAt" : 1523858718767.0, 
+    "updated_at" : 1523858718767.0
+}
+{ 
+    "_id" : ObjectId("5ad063683fe4b30860d381ab"), 
+    "username" : "123123123", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123123", 
+    "password" : "123123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523606376387.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523606376388.0, 
+    "updatedAt" : 1523606376388.0
+}
+{ 
+    "_id" : ObjectId("5ad065456362103bc83fff91"), 
+    "username" : "1231312", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123123", 
+    "password" : "123123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523606853644.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523606853645.0, 
+    "updatedAt" : 1523606853645.0
+}
+{ 
+    "_id" : ObjectId("5ad066bf5d7ced3df0759a99"), 
+    "username" : "ađá", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "qưeqưe", 
+    "password" : "qưeqư", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523607231740.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523607231741.0, 
+    "updatedAt" : 1523607231741.0
+}
+{ 
+    "_id" : ObjectId("5ad066f55c87cb247003558e"), 
+    "username" : "12312", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "1231", 
+    "password" : "23123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523607285646.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523607285647.0, 
+    "updatedAt" : 1523607285647.0
+}
+{ 
+    "_id" : ObjectId("5ad0673c658f1c3f08167b6c"), 
+    "username" : "12312", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123", 
+    "password" : "123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523607356783.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523607356784.0, 
+    "updatedAt" : 1523607356784.0
+}
+{ 
+    "_id" : ObjectId("5ad06a94d10efe3d0c610cdc"), 
+    "username" : "321", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "12312", 
+    "password" : "31231", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523608212319.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523608212320.0, 
+    "updatedAt" : 1523608212320.0
+}
+{ 
+    "_id" : ObjectId("5ad06b227ad2a300b8e46322"), 
+    "username" : "aasd", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "asd", 
+    "password" : "asd", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523608354857.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523608354858.0, 
+    "updatedAt" : 1523608354858.0
+}
+{ 
+    "_id" : ObjectId("5ad06b359c5dfb0374d1670d"), 
+    "username" : "1213", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123", 
+    "password" : "123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523608373937.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523608373938.0, 
+    "updatedAt" : 1523608373938.0
+}
+{ 
+    "_id" : ObjectId("5ad06bb909d6dc2120cfdef9"), 
+    "username" : "123", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123", 
+    "password" : "123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523608505094.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523608505095.0, 
+    "updatedAt" : 1523608505095.0
+}
+{ 
+    "_id" : ObjectId("5ad06dda10b57d1fe0cf6ad4"), 
+    "username" : "123", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123", 
+    "password" : "123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523609050762.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523609050763.0, 
+    "updatedAt" : 1523609050763.0
+}
+{ 
+    "_id" : ObjectId("5ad06e4683906a2160a0fb6a"), 
+    "username" : "123", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123", 
+    "password" : "123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523609158733.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523609158733.0, 
+    "updatedAt" : 1523609158733.0
+}
+{ 
+    "_id" : ObjectId("5ad06ee204f4280a5c9dc1ac"), 
+    "username" : "12312", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123", 
+    "password" : "1123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523609314542.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523609314543.0, 
+    "updatedAt" : 1523609314543.0
+}
+{ 
+    "_id" : ObjectId("5ad06f277eaa9434b8c819c2"), 
+    "username" : "123", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123", 
+    "password" : "123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523609383098.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1523609383099.0, 
+    "updatedAt" : 1523609383099.0
+}
+{ 
+    "_id" : ObjectId("5ad070adf947ed17242eec7c"), 
+    "username" : "123123", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123", 
+    "password" : "123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523609773771.0, 
+    "role" : NumberInt(1), 
+    "createdAt" : 1523609773772.0, 
+    "updatedAt" : 1524039218138.0, 
+    "updated_at" : 1524039218137.0
+}
+{ 
+    "_id" : ObjectId("5ad559175f0e1625b4f3ad31"), 
+    "username" : "fbcb", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "dfgdfg", 
+    "password" : "dfg", 
+    "active" : NumberInt(1), 
+    "created_at" : 1523931415622.0, 
+    "role" : NumberInt(1), 
+    "createdAt" : 1523931415623.0, 
+    "updatedAt" : 1523931415623.0
+}
+{ 
+    "_id" : ObjectId("5ad6fe3e09c2a21d105b8ee6"), 
+    "username" : "1", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123", 
+    "password" : "123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1524039230198.0, 
+    "role" : NumberInt(1), 
+    "createdAt" : 1524039230198.0, 
+    "updatedAt" : 1524039230198.0
+}
+{ 
+    "_id" : ObjectId("5ad6fe4509c2a21d105b8ee7"), 
+    "username" : "2", 
+    "email" : "it.hoangsi@gmail.com", 
+    "display_name" : "123", 
+    "password" : "123", 
+    "active" : NumberInt(1), 
+    "created_at" : 1524039237483.0, 
+    "role" : NumberInt(0), 
+    "createdAt" : 1524039237483.0, 
+    "updatedAt" : 1524039237483.0
+}

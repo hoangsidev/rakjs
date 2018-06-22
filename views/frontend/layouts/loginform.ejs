@@ -1,0 +1,57 @@
+<!-- form đăng nhập -->
+
+    <div id="login_gopy" class="modal fade" role="dialog" >
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content" style="padding-left:5px;padding-right:5px;">
+          
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Đăng nhập</h4>
+          </div>
+
+
+
+          <div class="modal-body">
+            <form method="POST" action="./login" accept-charset="UTF-8" id="form_login">
+                <input  type="hidden" class="form-control" name="url_current" value="<%- req.url %>">
+                <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">&nbsp;<i class="fa fa-user" aria-hidden="true"></i></span>
+                <input type="text" name="user_login" id="user_login" class="form-control" placeholder="Tài khoản hoặc email" aria-label="Tài khoản hoặc email" aria-describedby="basic-addon1" required>
+                </div>
+                <br>
+                <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-key" aria-hidden="true"></i></span>
+                <input type="password" name="user_pass" id="user_pass"  class="form-control" placeholder="Mật khẩu" aria-label="Mật khẩu"  aria-describedby="basic-addon2" required>
+                </div>
+        
+                <div class="input-group" style="padding:10px 0 10px 0;">
+        
+                <label><input type="checkbox" name="remember" id="remember" style="position:relative">&nbsp; Nhớ tài khoản</label>
+                </div>
+        
+                <div class="input-group" style="width:100%;margin-bottom:10px;">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                    &nbsp;Đăng nhập</button>
+                </div>
+                </div>
+            </form>
+           <!-- <div class="clearfix"></div> -->
+          </div>
+    
+        
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+
+
+        </div>
+         <!-- End Modal content-->
+
+      </div>
+    </div>
+    
+    <!-- kết thúc form đăng nhập -->

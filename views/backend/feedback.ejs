@@ -1,0 +1,73 @@
+<%- partial('./layouts/header') %>
+    <div id="wrapper">
+        <%- partial('./layouts/sidebar') %>
+            <div id="wrapper_primary">
+                <!-- content -->
+                <div class="rows">
+                    <%- partial('./layouts/breadcrumb') %>
+                </div>
+                <div class="rows">
+                    <table class="table table-bordered table-striped wrap_data wrap_data_approvals">
+                        <thead>
+                            <tr>
+                                <!-- <th style="text-align:center;width:25px;">
+                                    <input type="checkbox" id="1">
+                                </th> -->
+                                <th style="width:30px;">STT</th>
+                                <th style="width:130px;" class="text-center">Họ và tên</th>
+                                <th class="text-center">Email</th>
+                                <th>Nội dung</th>
+                                <th style="width:130px;" class="text-center">Ngày góp ý</th>
+                                
+                                <th class="text-center">Tình trạng</th>
+                                <th style="width:75px;text-align:center;">Tùy chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-words">
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td>Hoàng Sĩ</td>
+                                <td>it.hoangsi@gmail.com</td>
+                                <td> mỗi từ kanji đều có âm hán việt của nó. ví dụ 行 âm hán việt là "hành". mọi người thường nhớ kanji dựa vào âm hán việt. nếu có âm hán việt cho từ kanji sẽ tốt hơn.</td>
+                                <td>18/4/2018 lúc 4:00 pm</td>
+                                <td><span class="label label-success">Đã duyệt</span></td>
+                                <td style="text-align:center;">
+                                    <a href="#" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" onclick="return confirm('Bạn chắc chắn duyệt góp ý này?')" data-original-title="Xem chi tiết">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </a>
+                                    <form action="http://127.0.0.1:1337/backend/word/delete" method="POST" style="display:inline-block;">
+                                        <input type="hidden" value="5ad43b6b43427631c06ecd80" name="id">
+                                        <input type="hidden" name="old_url" value="">
+                                        <button type="submit" onclick="return confirm('Bạn chắc chắn ?')" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xóa">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td>Hoàng Sĩ</td>
+                                <td>it.hoangsi@gmail.com</td>
+                                <td>Trang web này nên thêm chức năng hiện ra chữ hán việt giống bên Mazzi để người tra có thể dễ dàng nhớ từ, giúp tăng kiến thức phần từ vựng.</td>
+                                <td>18/4/2018 lúc 4:00 pm</td>
+                                <td><span class="label label-danger">Chưa duyệt</span></td>
+                                <td style="text-align:center;">
+                                    <a href="#" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xem chi tiết">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </a>
+                                    <form action="http://127.0.0.1:1337/backend/word/delete" method="POST" style="display:inline-block;">
+                                        <input type="hidden" value="5ad43b6b43427631c06ecd80" name="id">
+                                        <button type="submit" onclick="return confirm('Bạn chắc chắn ?')" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xóa">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end content -->
+            </div>
+            <section></section>
+            <!-- end section -->
+            <%- partial('./layouts/footer') %>

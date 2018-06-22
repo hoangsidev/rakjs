@@ -1,0 +1,65 @@
+<%- partial('../layouts/header') %>
+    <div id="wrapper">
+        <%- partial('../layouts/sidebar') %>
+            <div id="wrapper_primary">
+                <!-- content -->
+                <div class="rows">
+                    <%- partial('../layouts/breadcrumb') %>
+                </div>
+                <div class="rows">
+
+                        <% var data_word = JSON.parse(data_word_json);
+                        if(data_word.length > 0) {
+                        data_word.forEach(function(index){ %>
+
+                    <h1><% if (index.kanji) { %><%= index.kanji %><% } %></h1>
+                    <span><% if (index.hiragana) { %><%= index.hiragana %><% } %> <% if (index.katakana) { %><%= index.katakana %><% } %> [<% if (index.romaji) { %><%= index.romaji %><% } %>]</span>
+                            <hr>
+                            <ul>
+                            <% var data_means =  index.means;
+                            if(data_means!=null && data_means.length > 0) {
+                            data_means.forEach(function(index_mean){ %>
+                                    <li><% if (index_mean.type_word) { %>[<%= index_mean.type_word %>]<% } %> <% if (index_mean.mean) { %><%= index_mean.mean %><% } %></li>
+                                <% }) } %>
+                            </ul>
+
+                        <hr>
+
+                        <% var data_examples =  index.examples;  if(data_examples!=null && data_examples.length > 0) {
+                            data_examples.forEach(function(index_example){ %>
+                                <ul id="wrap_furigana" style="font-size: 22px;">
+                                    <li><span class="furigana"><% if (index_example.example) { %><%= index_example.example %><% } %></span> : <% if (index_example.mean_exam) { %><%= index_example.mean_exam %><% } %></li>
+                                </ul>
+
+                                <% }) } %>
+
+                    <% }) } %>
+
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- end content -->
+    </div>
+    <section></section>
+    <!-- end section -->
+    <script src="<%= get_base_url_admin() %>/plugins/kuroshiro/kuroshiro.js"></script>
+    <script>
+        $(document).ready(function () {
+             // Tự động biên dịch hiragana...
+            kuroshiro.init(function (err) {
+                $('#wrap_furigana li').each(function (index) {
+                    var value_furigana = $(this).find('.furigana').text();
+                    // console.log(value_furigana);
+                    if (value_furigana != '') {
+                        var result_furigana = kuroshiro.convert(value_furigana, { to: 'hiragana', mode: 'furigana' }); 
+                        $(this).find('.furigana').html(result_furigana);
+                    }
+                });
+            });
+            // Kết thúc tự động biên dịch hiragana...
+        });
+       
+
+    </script>
+    <%- partial('../layouts/footer') %>

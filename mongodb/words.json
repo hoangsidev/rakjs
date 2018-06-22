@@ -1,0 +1,185 @@
+{ 
+    "_id" : ObjectId("5ac2dd6a40544528f48d6c55"), 
+    "kanji_options" : {
+        "onyomi" : "{\"ケン\":\"ken\"}", 
+        "kunyomi" : "{\"いぬ\":\"inu\",\"いぬ-\":\"inu-\"}", 
+        "jlpt" : 4, 
+        "strokes" : 4, 
+        "pinyin" : {
+            "name_kanji" : "犬", 
+            "name_vi" : "KHUYỂN"
+        }, 
+        "pinyins" : [
+            {
+                "name_kanji" : "大", 
+                "name_vi" : "ĐẠI, THÁI"
+            }, 
+            {
+                "name_kanji" : "丶", 
+                "name_vi" : "CHỦ"
+            }
+        ]
+    }, 
+    "type_verbs" : {
+        "jishokei" : null, 
+        "takei" : null, 
+        "mizenkei" : null, 
+        "teineikei" : null, 
+        "teikei" : null, 
+        "kanoukei" : null, 
+        "ukemitei" : null, 
+        "shiekitei" : null, 
+        "shieki_ukemitei" : null, 
+        "joukentei" : null, 
+        "meireitei" : null, 
+        "ikoutei" : null, 
+        "kinshikei" : null
+    }, 
+    "flag" : "kanji", 
+    "word_id" : null, 
+    "kanji" : "犬", 
+    "hiragana" : null, 
+    "katakana" : null, 
+    "romaji" : null, 
+    "means" : [
+        {
+            "_id" : ObjectId("5ac2d2c540544528f48c9234"), 
+            "mean" : "con chó. tào đường [曹唐] : nguyện đắc hoa gian hữu nhân xuất&#44; miễn linh tiên khuyển phệ lưu lang [願得花間有人出&#44; 免令仙犬吠劉郎] (lưu nguyễn động trung ngộ tiên tử [劉阮洞中遇仙子]) mong rằng trong hoa có người ra đón&#44; để chó nhà tiên khỏi sủa chàng lưu. ngô tất tố dịch thơ : dưới hoa ước có ai ra đón&#44; để chó nhà tiên khỏi sủa người.", 
+            "type_trans" : "vi", 
+            "type_word" : "N/A", 
+            "active" : 2, 
+            "created_at" : null, 
+            "updated_at" : null, 
+            "user_created" : null, 
+            "user_updated" : null, 
+            "user_actived" : "N/A"
+        }, 
+        {
+            "_id" : ObjectId("5ac2d2c540544528f48c9235"), 
+            "mean" : "nói ý hèn hạ. kẻ dưới đối với kẻ trên có chút công lao tự nói nhún là khuyển mã chi lao [犬馬之勞] cái công chó ngựa.", 
+            "type_trans" : "vi", 
+            "type_word" : "N/A", 
+            "active" : 2, 
+            "created_at" : null, 
+            "updated_at" : null, 
+            "user_created" : null, 
+            "user_updated" : null, 
+            "user_actived" : "N/A"
+        }
+    ], 
+    "examples" : [
+        {
+            "_id" : ObjectId("5ac2db1c40544528f48cef80"), 
+            "example" : "犬", 
+            "example_hira" : "いぬ", 
+            "mean_pinyin" : "KHUYỂN", 
+            "mean_exam" : "cẩu", 
+            "type_trans" : "vi", 
+            "furigana" : "", 
+            "active" : 2, 
+            "created_at" : null, 
+            "updated_at" : null, 
+            "user_created" : null, 
+            "user_updated" : null, 
+            "user_actived" : "N/A"
+        }, 
+        {
+            "_id" : ObjectId("5ac2db1c40544528f48cef81"), 
+            "example" : "一犬", 
+            "example_hira" : "いちいぬ", 
+            "mean_pinyin" : "NHẤT KHUYỂN", 
+            "mean_exam" : "cái nhìn", 
+            "type_trans" : "vi", 
+            "furigana" : "", 
+            "active" : 2, 
+            "created_at" : null, 
+            "updated_at" : null, 
+            "user_created" : null, 
+            "user_updated" : null, 
+            "user_actived" : "N/A"
+        }, 
+        {
+            "_id" : ObjectId("5ac2db1c40544528f48cef82"), 
+            "example" : "仔犬", 
+            "example_hira" : "こいぬ", 
+            "mean_pinyin" : "TỬ KHUYỂN", 
+            "mean_exam" : "con chó con; chó con; cún con .", 
+            "type_trans" : "vi", 
+            "furigana" : "", 
+            "active" : 2, 
+            "created_at" : null, 
+            "updated_at" : null, 
+            "user_created" : null, 
+            "user_updated" : null, 
+            "user_actived" : "N/A"
+        }, 
+        {
+            "_id" : ObjectId("5ac2db1c40544528f48cef83"), 
+            "example" : "犬儒", 
+            "example_hira" : "けんじゅ", 
+            "mean_pinyin" : "KHUYỂN NHO", 
+            "mean_exam" : "nhà khuyến nho", 
+            "type_trans" : "vi", 
+            "furigana" : "", 
+            "active" : 2, 
+            "created_at" : null, 
+            "updated_at" : null, 
+            "user_created" : null, 
+            "user_updated" : null, 
+            "user_actived" : "N/A"
+        }, 
+        {
+            "_id" : ObjectId("5ac2db1c40544528f48cef84"), 
+            "example" : "子犬", 
+            "example_hira" : "こいぬ", 
+            "mean_pinyin" : "TỬ KHUYỂN", 
+            "mean_exam" : "con chó con; chó con; cún con", 
+            "type_trans" : "vi", 
+            "furigana" : "", 
+            "active" : 2, 
+            "created_at" : null, 
+            "updated_at" : null, 
+            "user_created" : null, 
+            "user_updated" : null, 
+            "user_actived" : "N/A"
+        }, 
+        {
+            "_id" : ObjectId("5ac2db1c40544528f48cef85"), 
+            "example" : "小犬", 
+            "example_hira" : "こいぬ", 
+            "mean_pinyin" : "TIỂU KHUYỂN", 
+            "mean_exam" : "con chó con; chó con; cún con", 
+            "type_trans" : "vi", 
+            "furigana" : "", 
+            "active" : 2, 
+            "created_at" : null, 
+            "updated_at" : null, 
+            "user_created" : null, 
+            "user_updated" : null, 
+            "user_actived" : "N/A"
+        }, 
+        {
+            "_id" : ObjectId("5ac2db1c40544528f48cef86"), 
+            "example" : "愛犬", 
+            "example_hira" : "あいけん", 
+            "mean_pinyin" : "ÁI KHUYỂN", 
+            "mean_exam" : "con chó yêu", 
+            "type_trans" : "vi", 
+            "furigana" : "", 
+            "active" : 2, 
+            "created_at" : null, 
+            "updated_at" : null, 
+            "user_created" : null, 
+            "user_updated" : null, 
+            "user_actived" : "N/A"
+        }
+    ], 
+    "active" : null, 
+    "created_at" : null, 
+    "updated_at" : null, 
+    "user_created" : null, 
+    "user_updated" : null, 
+    "user_actived" : null, 
+    "user_ip" : null, 
+    "__v" : 0
+}

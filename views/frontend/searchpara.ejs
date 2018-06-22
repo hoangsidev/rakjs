@@ -1,0 +1,170 @@
+<%- partial('layouts/header_searchpara') %>
+ <!-- section -->
+<section id="content" class="content-child">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-12">
+                 <!--content-left-->
+                 
+                 <div class="content-left">
+                 
+                  
+                    <!-- ////////////////// -->
+                    <div class="search-group-child3-wrap active_trans2 search-group-child2-plus">
+                            <div class="container">
+                               <div class="row">
+                                  <div class="col-md-9">
+                                     <div class="search-group search-group-child2">
+                                        <!-- form search -->
+                                        <div class="search-group-child2-inner">
+                                        
+                                          <form method="GET" action="./search" accept-charset="UTF-8" role="search" id="form_search" value="" class="form form_draw">
+             
+                                              <div class="search">
+                                                 
+                                                 <input name="word" class="search-input" id="search" placeholder="日本, にほん, nihon, Nhật Bản, ..." autocomplete="off" value="" autofocus>
+                                                 
+                                                 <div class="search-del-data search-input-custom deletedata" id="search_del_data"> <i class="fa fa-times" aria-hidden="true"></i> </div>
+                                                 
+                                                 <div class="search-draw-kanji  search-input-custom"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </div>
+                                                 
+                                                 
+                                                 
+                                                 <button type="submit" class="search-sp3 hover  search-input-custom"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                                 
+                                                 <script src="frontend/js/canvasdraw.js"></script>	
+                                                 
+                                                   <div class="kanji-draw-wrap kanji-draw-wrap-child">
+                                                                    
+                                                                     <div class="kanji-draw-inner">
+                                                                  
+                                                                              <div class="kanji-draw-canvas">
+                                                                                     <canvas id="myCanvas" width="500" height="250"></canvas>
+                                                                                       <div class="kanji-draw-direct">
+                                                                                      <a href="javascript:clearArray();">Clear</a>
+                                                                                      <a href="javascript:cUndo();">Back</a>
+                                                                              </div>
+                                                                              </div>
+                                                                              
+                                                                             
+                                                                              
+                                                                              <div class="kanji-draw-result" id="kanji-draw-result"></div>
+          
+                                                                              <span class="close-kanji-draw"><i class="fa fa-times" aria-hidden="true"></i></span>                                                               
+                                                                              
+                                                                      </div>        
+                                                                  
+                                                                 </div><!--/kanji-draw-wrap-->
+                                                 
+                                                 
+                                              </div>
+                                         
+                                         </form>
+                                           
+                                           <div class="clearfix"></div>
+                                           
+                                        </div>
+                                        <!-- end form search --> 
+                                        <div class="clearfix"></div>
+                                       
+                                     </div>
+                                  </div>
+                                  
+                                   <div class="col-md-3">
+                                   </div>
+                                  
+                               </div>
+                            </div>
+                   </div>
+         <!--/search-group-child2-wrap-->
+                     <!-- ////////////////// -->
+                    
+                    
+                    <!-- ////////////////// -->
+                    <div class="search-para-wrap">
+                            <div class="row">
+                            
+                               <div class="col-md-6">
+                                  <div class="search-para-left">
+                                  
+                                            <div class="navigation-bar navigation-bar-source">
+                                                     
+                                                     <div class="btn-group">
+                                                           <button type="button" class="btn  btn-source  btn-default active" source="ja">Japanese</button>
+                                                           <button type="button" class="btn btn-source btn-default " source="en">English</button>
+                                                           <button type="button" class="btn btn-source btn-default" source="vi">Vietnamese</button>
+                                                     </div>
+                                                     
+                                         </div><!--/navigation-bar-->
+                                         
+                                         
+                                         <div class="search-pagagraph">
+                                         
+                                            <textarea class="form-control search-pagagraph-form search-pagagraph-source" id="search-pagagraph-source" rows="25"></textarea>
+                                             
+                                             <span class="remove-text"><i class="fa fa-times" aria-hidden="true"></i></span>			                    
+                                         
+                                         </div>
+                        
+                                         <div class="search-pagagraph-src_translit"></div>
+                                         
+                     
+                                  </div><!--/search-para-left-->        
+                               </div>
+                               
+                               <div class="col-md-6">
+                                  <div class="search-para-right">
+                                  
+                                  
+                                  <div class="navigation-bar">
+                                                     
+                                                     <div class="btn-group navigation-bar-taget">
+                                                           <button type="button" class="btn btn-target btn-default " target="ja">Japanese</button>
+                                                           <button type="button" class="btn btn-target btn-default" target="en">English</button>
+                                                           <button type="button" class="btn btn-target btn-default active" target="vi">Vietnamese</button>
+                                                     </div>
+                                                     
+                                                     <button type="button" class="btn btn-primary btn-translate">Translate</button>
+                                                     
+                                                     <img class="loading-bar" src="frontend/images/ajax-loader.gif" alt="Loading">
+                                                     
+                                  </div><!--/navigation-bar-->
+                                         
+                                         
+                                 <div class="search-pagagraph">
+                                         
+                                              
+                                              <textarea class="form-control search-pagagraph-form search-pagagraph-target" id="search-pagagraph-target"  rows="25"></textarea>
+                                         
+                                 </div>
+                                 
+                                 <div class="search-pagagraph-translit"></div>        
+                                         
+                                       
+                     
+                     
+                                         
+                                         
+                                  </div><!--search-para-right-->
+                               </div>
+                               
+                               
+                            </div>
+                     </div><!--//search-para-wrap-->
+                    <!-- ////////////////// -->
+                    
+                    
+                 </div>
+                 
+                 
+                 <!--/content-left-->
+              </div>
+             
+           </div>
+        </div>
+</section>
+     <!-- end section -->
+<%- partial('layouts/footer_searchpara') %>     
+
+
+

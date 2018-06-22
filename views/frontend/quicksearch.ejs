@@ -1,0 +1,224 @@
+<%
+    var data_words = JSON.parse(data_words_json)
+    var data_google = JSON.parse(data_search_google)
+%>
+<div id="tuvung" class="tab-pane fade in active">
+    <% if( data_words.length > 0 ){ %>
+
+       <% data_words.forEach(function(index, num){ %>
+        <div class="primary-content-text">
+                <div class="word-group">
+                    <span class="word-icon">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </span>
+                    <div class="word-group-child">
+                        <% if (index.kanji) { %>
+                        <div class="word-item">
+                            <span class="word-item-kanji">
+                            <%- index.kanji %>
+                            </span>
+                        </div>
+                        <% } %>
+   
+                        <% if (index.hiragana) { %>
+                        <div class="word-item">
+   
+                            <span class="word-item-hira">
+                                <%- index.hiragana %>
+                            </span>
+                            <% if (index.romaji){ %>
+                            <span class="word-item-roma-wrap">[<span class="word-item-roma"><%- index.romaji %></span>]</span>
+                            <% } %>
+                            
+                        </div>
+                        <% } %>
+   
+                        <% if (index.katakana) { %>
+                            <div class="word-item">
+                                <span class="word-item-kata">
+                                    <%- index.katakana %>
+                                </span>
+                            </div>
+                        <% } %>
+   
+                    </div>
+                </div>
+                <!--/word-group-->
+                <% var data_means =  index.means;
+   
+                if(data_means!=null && data_means.length > 0) { %>
+                <div class="mean-group">
+                   <span>Giải nghĩa:</span>
+                    <% 
+                    var num_count = 1
+                    data_means.forEach(function(index_mean, num_mean){ 
+                    %>
+                        
+                        <% if (index_mean.mean && index_mean.active == 2 ){ %>
+                            
+                        <div class="mean-item">
+                            <span class="mean-item-icon">
+                                <%- num_count + '. ' %>
+                            </span>
+   
+                            <% if( index.flag == 'word' ){  %>
+                            
+                            <span class="mean-item-type-word">
+                                [<% if(index_mean.type_word) { %>
+                                    <%- get_type_word(index_mean.type_word)  %>
+                                <% } %>]
+                            </span>
+   
+                            <% } %>
+   
+                            <span class="mean-item-cnt">
+                               
+                                 <%- index_mean.mean %> %>
+                            </span>
+                        </div>
+                            <% 
+                            num_count++
+                        } %>
+   
+                        <% }) %>
+                </div>
+                <% } %>
+   
+                <% var data_examples =  index.examples;
+                 if(data_examples!=null && data_examples.length > 0) { %>
+   
+                    <% if( index.flag == 'word' ) { %> 
+                    <!--/mean-group-->
+                    <div class="exam-group">
+                            <span class="lable-means">Câu ví dụ:</span>
+                        <%
+                        var num_example = 1
+   
+                        data_examples.forEach(function(index_example){  %>
+   
+                            <% if( index_example.active == 2 ){ %>
+   
+                            <%
+                            var example_view = index_example.example
+   
+                                if( index_example.furigana != null && index_example.furigana != ''){
+   
+                                    example_view = ''
+                                    
+                                    var example_furigana =  index_example.furigana
+   
+                                    var example_split = example_furigana.split("{")
+   
+                                        example_split.forEach( (items_exam, items_index)=>{
+                                        
+                                        var pattern = new RegExp(':')
+   
+                                        if (pattern.test(items_exam)) {
+   
+                                            items_exam = items_exam.replace(":", "<rt>")
+                                            items_exam = items_exam.replace("}", "</rt></ruby>")
+                                            items_exam = items_exam.replace(items_exam, "<ruby>"+items_exam);    
+                                        } 
+                                        
+                                        example_view = example_view + items_exam
+                                        
+                                    })
+                            
+   
+                                }
+                            %>
+                            
+                            <div class="exam-item">
+                                <span class="lable-nam">
+                                    <%- num_example + ". " %>
+                                </span>
+                                <span class="exam-item-jp">
+                                    
+                                    <% if ( index_example.example || index_example.furigana ) { %><%- example_view %><% } %>
+                                </span>:
+                                <span class="exam-item-vn">
+                                    
+                                    <% if ( index_example.mean_exam) { %><%-  index_example.mean_exam %><% } %>
+   
+                                </span>
+                            </div>
+   
+                            <% num_example++ } %>
+                            <!-- active==2  -->
+   
+                            <% }) %>
+                    </div>
+                    <!--/exam-group-->
+                    <% } %>
+   
+                    <% if( index.flag == 'kanji' ) { %> 
+                        <div class="kanji-exam-group">
+                                <div class="kanji-example-group">
+                                    <table class="kanji-example">
+                                        <thead>
+                                            <tr>
+                                                <th class="col1 col-hide-sm">STT</th>
+                                                <th>TỪ</th>
+                                                <th class="col-hide-sm">HIRAGANA</th>
+                                                <th>HÁN VIỆT</th>
+                                                <th>NGHĨA</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                            <% 
+                                                var num_example_kanji = 1  
+                                                data_examples.forEach(function(index_example){  %>
+                                                <% if( index_example.active == 2 ){ %>
+                                            <tr>
+                                                <td class="example_num col-hide-sm"><%- num_example_kanji + '. ' %></td>
+                                                <td class="example_kanji"><%- index_example.example %></td>
+                                                <td class="example_hira col-hide-sm"><%- index_example.example_hira %></td>
+                                                <td class="example_pinyin"><%- index_example.mean_pinyin %></td>
+                                                <td class="example_mean_ex"><%- index_example.mean_exam %></td>
+                                            </tr>
+                                            <% num_example_kanji ++ } %> 
+                                            <% }) %>
+   
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!--/kanji-exam-group-->
+                    <% } %>    
+   
+   
+                <% } %>
+   
+        </div>
+        <% }) %>
+        
+     <% }else{ 
+         
+           if( data_google ){ %>
+
+               <div class="autosearch-wrap">
+
+                           <%
+                               if( data_google.type_trans == 2 ){ %>
+                               
+                               <div class="autosearch_searchvalue"> <%- data_google.orig %></div>
+                               <div class="autosearch_src_translit"><%- data_google.translit %></div> 
+                               <div class="autosearch_trans mgt-10"><%- data_google.trans %></div>
+               
+                           <% }else{ %>
+                               
+                               <div class="autosearch_searchvalue"> <%- data_google.orig %></div>
+                               <div class="autosearch_trans mgt-10"><%- data_google.trans %></div>
+                               <div class="autosearch_translit"><%- data_google.translit %></div> 
+               
+                           <% } %>
+                   
+                       <span class="autosearch-label">Dịch tự động</span>
+               </div><!--/autosearch-wrap-->
+
+          <% } 
+     } %>
+     
+    
+</div> 

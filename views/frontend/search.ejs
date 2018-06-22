@@ -1,0 +1,1439 @@
+<%- partial('layouts/header_child') %>
+    <div class="overlay-bg"> </div>
+    <!-- container -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-push-12">
+                <!-- Left menu element-->
+                <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
+                    <div class="app-navigation app-navigation-child  col-xs-push-12">
+                        <div class="toogle-nav hover">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </div>
+                        <div class="app-item app-item-contact">
+                            <a href="#" title="Contact">
+                                <img src="frontend/images/contact-icon.png" alt="contact">
+                            </a>
+                        </div>
+                        <div class="app-item">
+                            <a href="#" title="App iOS">
+                                <img src="frontend/images/ico-apple.png" alt="iOS">
+                                <br>
+                                <span>iOS</span>
+                            </a>
+                        </div>
+                        <div class="app-item">
+                            <a href="#" title="Android">
+                                <img src="frontend/images/ico-android.png" alt="Android">
+                                <br>
+                                <span>Android</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="app-navigation-plus   col-xs-push-12">
+                        <ul class="app-navigation-plus-menu">
+                            <li>
+                                <a class="hover" href="./">
+                                    <i class="fa fa-search" aria-hidden="true"></i> Tra cứu</a>
+                            </li>
+                            <li>
+                            </li>
+                            <li>
+                                <a class="hover" href="javascript:void(0)">
+                                    <i class="fa fa-font" aria-hidden="true"></i> Lịch sử</a>
+                            </li>
+                            <li>
+                            </li>
+                            <li>
+                                <a class="hover" href="./searchpara">
+                                    <i class="fa fa-newspaper-o" aria-hidden="true"></i> Đoạn văn</a>
+                            </li>
+                            <li>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/app-navigation-plus-->
+                    <div class="search-group search-group-child">
+                        <!-- form search -->
+                        <div class="search-group-child-inner">
+                            <form class="form form_draw1" method="get" action="./search">
+                                <div class="search">
+                                    <input name="word" class="search-input" id="search" value="<%- data_word_search %>" placeholder="日本, にほん, nihon, Nhật Bản, ..." autocomplete="off" autofocus>
+                                    <div class="search-del-data search-input-custom deletedata" id="search_del_data">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="search-draw-kanji1  search-input-custom">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </div>
+                                    <button type="submit" class="search-sp hover  search-input-custom">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </button>
+
+                                    <!-- quicksearch -->
+                                    <script src="frontend/js/canvasdraw1.js"></script>
+                                    <div class="kanji-draw-wrap kanji-draw-wrap-child">
+                                                       	
+                                        <div class="kanji-draw-inner">
+                                     
+                                                 <div class="kanji-draw-canvas">
+                                                        <canvas id="myCanvas1" width="500" height="250"></canvas>
+                                                        
+                                                        <div class="kanji-draw-direct">
+                                                         <a href="javascript:clearArray1();">Clear</a>
+                                                         <a href="javascript:cUndo1();">Back</a>
+                                                 </div>
+                                                        
+                                                 </div> 
+                                                 <div class="kanji-draw-result" id="kanji-draw-result1"></div>                                     
+                                                 <span class="close-kanji-draw"><i class="fa fa-times" aria-hidden="true"></i></span>
+                                         </div>
+                                    </div><!--/kanji-draw-wrap-->	
+                                     <!-- End quicksearch -->
+
+                                </div>
+                                <button type="submit" id="btn_search" class="btn_search hover">
+                                    <img src="frontend/images/ico-btn-search.png" alt="Facebook">
+                                    <span class="txt_btn_search">Tìm kiếm</span>
+                                </button>
+                            </form>
+                            <div class='clearfix'></div>
+                        </div>
+                        <!-- end form search -->
+                        <div class="clearfix"></div>
+                        <ul class="nav nav-pills nav-style-trans">
+                            <li class="active">
+                                <a data-toggle="pill" href="#tuvung">Từ vựng &amp; Kanji</a>
+                            </li>
+                            <li>
+                                <a data-toggle="pill" href="#hantu">Hán tự</a>
+                            </li>
+                            <li>
+                                <a data-toggle="pill" href="#maucau">Mẫu câu ví dụ</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="primary-navigation  primary-navigation-child col-xs-pull-12">
+                        <div class="logo-in-menu">
+                            <a class="hover" href="./">
+                                <img src="frontend/images/brand.png" alt="Rakuji.vn">
+                            </a>
+                            <a class="close-menu hover">
+                                <i class="fa fa-close" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li role="presentation">
+                                <a href="#">
+                                    <i class="fa  fa-info-circle" aria-hidden="true"></i> &nbsp; Thông tin</a>
+                            </li>
+                            <li role="presentation">
+                                <a class="presentation-a-plus" href="#">
+                                    <i class="fa fa-plus fa-plus-plus1" aria-hidden="true"></i>
+                                    <span class="menu-item-plus1">Yêu cầu
+                                        <br class="not_in_sp"> bổ sung từ</span>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp; Góp ý</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#">
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i> &nbsp; Mẫu câu</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#">
+                                    <i class="fa fa-envelope-open-o" aria-hidden="true"></i> &nbsp; Liên hệ</a>
+                            </li>
+                        </ul>
+                        <div class="presentation-child">
+                            <span class="social-item-item">
+                                <a href="/" title="Facebook" class="hover">
+                                    <img src="frontend/images/social-facebook.png" alt="Facebook"> </a>
+                            </span>
+                            <span class="social-item-item">
+                                <a href="/" title="Google +" class="hover">
+                                    <img src="frontend/images/social-google.png" alt="Google +"> </a>
+                            </span>
+                            <span class="social-item-item">
+                                <a href="/" title="Instagram" class="hover">
+                                    <img src="frontend/images/social-instagram.png" alt="Instagram"> </a>
+                            </span>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Left menu element-->
+            </div>
+            <div class="col-xs-push-12">
+                <div class="col-xs-12">
+                    <div class="wrapper wrapper-child row">
+                        <!-- header -->
+                        <header>
+                            <div class="header-inner">
+                                <div class="header-bar">
+                                    <div class="header-bar-left">
+                                        <div class="head-btn-menu1">
+                                            <span class="toggle-menu menu-left hover jPushMenuBtn">
+                                                <i class="fa fa-bars" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                        <ul class="head-btn-menu2">
+                                            <li>
+                                                <a class="hover" href="./">
+                                                    <i class="fa fa-search" aria-hidden="true"></i> Tra cứu</a>
+                                            </li>
+                                            <li>
+                                                <a class="hover notclick" href="javascript:void(0)">
+                                                    <i class="fa fa-font" aria-hidden="true"></i> Lịch sử</a>
+                                            </li>
+                                            <li class="mark-note">
+                                                <a class="hover" href="./searchpara">
+                                                    <i class="fa fa-newspaper-o" aria-hidden="true"></i> Dịch đoạn văn</a>
+                                            </li>
+                                            <li>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!--/header-bar-left-->
+                                    <div class="header-bar-right">
+                                        <div class="head-socials">
+                                            <span class="head-socials-item">
+                                                <a class="hover notclick" href="#">
+                                                    <img src="frontend/images/head-social1.png" alt="Social">
+                                                </a>
+                                            </span>
+                                            <span class="head-socials-item">
+                                                <a class="hover notclick" href="#">
+                                                    <img src="frontend/images/head-social2.png" alt="Social">
+                                                </a>
+                                            </span>
+                                            <span class="head-socials-item">
+                                                <a class="hover notclick" href="#">
+                                                    <img src="frontend/images/head-social3.png" alt="Social">
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <!--/head-socials-->
+                                        <div class="head-apps">
+                                            <span class="head-apps-item">
+                                                <a class="hover notclick" href="#">
+                                                    <img src="frontend/images/head-app1.png" alt="app">
+                                                </a>
+                                            </span>
+                                            <span class="head-apps-item">
+                                                <a class="hover notclick" href="#">
+                                                    <img src="frontend/images/head-app2.png" alt="app">
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <!--/head-apps-->
+                                        <div class="head-trans">
+                                            <div class="footer-languages-child">
+                                                <a class="hover notclick" href="#">
+                                                    <img src="frontend/images/ico-language.png" alt="Language"> &nbsp;
+                                                    <span class="txt-lang-pc1">Tiếng Việt
+                                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!--/head-trans-->
+                                        <div class="head-contact">
+                                            <a class="head-contact-pc hover " href="contact">
+                                                <img src="frontend/images/head-contact.png" alt="Contact">
+                                            </a>
+                                            <a class="head-contact-sp hover " href="contact">
+                                                <img src="frontend/images/head-contact1.png" alt="Contact">
+                                            </a>
+                                        </div>
+                                        <!--/head-contact-->
+                                    </div>
+                                    <!--/header-bar-right-->
+                                </div>
+                                <!--/header-bar-->
+                                <h1 class="logo-web">
+                                    <a class="hover" href="./">
+                                        <img src="frontend/images/brand.png" alt="Rakuji">
+                                    </a>
+                                </h1>
+                            </div>
+                        </header>
+                        <!-- end header -->
+                        <!-- section -->
+                        <section id="content" class="content-child">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <!--content-left-->
+                                        <div class="content-left">
+                                            <div class="search-group-child2-wrap">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            <div class="search-group search-group-child2">
+                                                                <!-- form search -->
+                                                                <div class="search-group-child2-inner">
+                                                                    <form class="form form_draw" method="get" action="./search">
+                                                                        <div class="search">
+                                                                            <input name="word" class="search-input" id="search" value="<%- data_word_search %>" placeholder="日本, にほん, nihon, Nhật Bản, ..." autocomplete="off" autofocus>
+                                                                            <div class="search-del-data search-input-custom deletedata" id="search_del_data">
+                                                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                                                            </div>
+                                                                            <div class="search-draw-kanji  search-input-custom">
+                                                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                                            </div>
+                                                                            <button type="submit" class="search-sp3 hover  search-input-custom">
+                                                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                                                            </button>
+
+
+                                                                            <script src="frontend/js/canvasdraw.js "></script>
+
+                                                                            <div class="kanji-draw-wrap kanji-draw-wrap-child">
+                                                       	
+                                                                                <div class="kanji-draw-inner">
+                                                                                        <div class="kanji-draw-canvas">
+                                                                                                <canvas id="myCanvas" width="500" height="250"></canvas>
+                                                                                                <div class="kanji-draw-direct">
+                                                                                                 <a href="javascript:clearArray();">Clear</a>
+                                                                                                 <a href="javascript:cUndo();">Back</a>
+                                                                                                </div> 
+                                                                                         </div>
+                                                                                         <div class="kanji-draw-result" id="kanji-draw-result"></div>
+                                                                                         <span class="close-kanji-draw"><i class="fa fa-times" aria-hidden="true"></i></span> 
+                                                                                 </div>        
+                                                                             
+                                                                            </div><!--/kanji-draw-wrap-->
+
+
+                                                                        </div>
+                                                                    </form>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                                <!-- end form search -->
+                                                                <div class="clearfix"></div>
+                                                                <ul class="nav nav-pills nav-style-trans3">
+                                                                    <li class="active">
+                                                                        <a data-toggle="pill" href="#tuvung">Từ vựng &amp; Kanji</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a data-toggle="pill" href="#hantu">Hán tự</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a data-toggle="pill" href="#maucau">Mẫu câu ví dụ</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/search-group-child2-wrap-->
+
+                                            <div class="tab-content">
+
+                                                 
+
+                                                <%
+                                                    var data_words = JSON.parse(data_words_json)
+                                                    var data_kanjis = JSON.parse(data_kanjis_json)
+                                                    var data_google = JSON.parse(data_search_google)
+                                                    var wordcheck = JSON.parse(wordcheck)
+                                                %>    
+
+                                                <!--***********tuvung*************-->
+                                                <div id="tuvung" class="tab-pane fade in active">
+                                                     <% if( data_words.length > 0 ){ %>
+
+                                                        <% data_words.forEach(function(index, num){ %>
+                                                         <div class="primary-content-text">
+                                                                 <div class="word-group">
+                                                                     <span class="word-icon">
+                                                                         <i class="fa fa-star" aria-hidden="true"></i>
+                                                                     </span>
+                                                                     <div class="word-group-child">
+                                                                         <% if (index.kanji) { %>
+                                                                         <div class="word-item">
+                                                                             <span class="word-item-kanji kanji_w_update" contenteditable="false" id="content_edit_kanji_w_<%- index.id %>" feedb_val_origin = "<%- index.kanji %>" feedb_id="<%- index.id %>" feedb_where="kanjis_update" feedb_userid = "<%- get_id_user() %>" feedb_username = "<%- get_name_user() %>" feedb_link="<%- get_base_url() %>/insertgopykanjiw" role_user = "<%- get_role_user() %>" get_index="<%- index.id %>">
+                                                                             <%- index.kanji %>
+                                                                             </span>
+
+                                                                             <% if( get_data_user(req.session.me) != null ){ %>
+                                                                             <a href="javascript:void(0)" id="btn_edit_kanji_w_<%- index.id %>"  class="btn-edit-gopy"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                             <% } %>   
+
+                                                                         </div>
+                                                                         <% } %>
+                                                    
+                                                                         <% if (index.hiragana) { %>
+                                                                         <div class="word-item">
+                                                    
+                                                                             <span class="word-item-hira hira_update" contenteditable="false" id="content_edit_hira_<%- index.id %>" feedb_val_origin = "<%- index.hiragana %>" feedb_id="<%- index.id %>" feedb_where="words_update" feedb_userid="<%- get_id_user() %>" feedb_username = "<%- get_name_user() %>" feedb_link="<%- get_base_url() %>/insertgopyhira" role_user = "<%- get_role_user() %>" get_index="<%- index.id %>">
+                                                                                 <%- index.hiragana %>
+                                                                             </span>
+
+                                                                             <% if( get_data_user(req.session.me) != null ){ %>
+                                                                             <a href="javascript:void(0)" id="btn_edit_hira_<%- index.id %>"  class="btn-edit-gopy"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                             <% } %> 
+
+
+                                                                             <% if (index.romaji){ %>
+                                                                             <span class="word-item-roma-wrap">[<span class="word-item-roma roma_update" contenteditable="false" id="content_edit_roma_<%- index.id %>" feedb_val_origin ="<%- index.romaji %>" feedb_id="<%- index.id %>" feedb_where="words_update" feedb_userid="<%- get_id_user() %>" feedb_username = "<%- get_name_user() %>" feedb_link="<%- get_base_url() %>/insertgopyroma" role_user="<%- get_role_user() %>" get_index="<%- index.id %>"><%- index.romaji %></span>]</span>
+                                                                             <% if( get_data_user(req.session.me) != null ){ %>
+                                                                             <a href="javascript:void(0)" id="btn_edit_roma_<%- index.id %>"  class="btn-edit-gopy"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                             <% } %> 
+                                                                             <% } %>
+                                                                             
+                                                                         </div>
+                                                                         <% } %>
+                                                    
+                                                                         <% if (index.katakana) { %>
+                                                                             <div class="word-item">
+                                                                                 <span class="word-item-kata kata_update" contenteditable="false" id="content_edit_kata_<%- index.id %>" feedb_val_origin = "<%- index.katakana %>" feedb_id="<%- index.id %>" feedb_where="words_update" feedb_userid="<%- get_id_user() %>" feedb_username = "<%- get_name_user() %>" feedb_link="<%- get_base_url() %>/insertgopykata" role_user="<%- get_role_user() %>" get_index="<%- index.id %>">
+                                                                                     <%- index.katakana %>
+                                                                                 </span>
+                                                                                 <% if( get_data_user(req.session.me) != null ){ %>
+                                                                                 <a href="javascript:void(0)" id="btn_edit_kata_<%- index.id %>"  class="btn-edit-gopy"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                                 <% } %> 
+                                                                             </div>
+                                                                         <% } %>
+                                                    
+                                                                     </div>
+                                                                 </div>
+                                                                 <!--/word-group-->
+                                                                 <% var data_means =  index.means;
+                                                    
+                                                                 if(data_means!=null && data_means.length > 0) { %>
+                                                                 <div class="mean-group">
+                                                                    <span>Giải nghĩa:</span>
+                                                                     <% 
+                                                                     var num_count = 1
+                                                                     data_means.forEach(function(index_mean, num_mean){ 
+                                                                     %>
+                                                                         
+                                                                         <% if (index_mean.mean && index_mean.active == 2 ){ %>
+                                                                             
+                                                                         <div class="mean-item mean_typeword_update" get_index="<%- index_mean.id %>">
+
+                                                                             <span class="mean-item-icon">
+                                                                                 <%- num_count + '. ' %>
+                                                                             </span>
+                                                    
+                                                                             <% if( index.flag == 'word' ){  %>
+                                                                             
+                                                                             <span class="mean-item-type-word type_word_update" feedb_typeword_id="<%- index_mean.type_word %>" feedb_val_origin = "<%- get_type_word(index_mean.type_word) %>" feedb_where="types_word">
+                                                                                 [<% if(index_mean.type_word) { %>
+                                                                                     <%- get_type_word(index_mean.type_word)  %>
+                                                                                 <% } %>]
+                                                                             </span>
+                                                    
+                                                                             <% } %>
+                                                    
+                                                                             <span class="mean-item-cnt mean_update" feedb_id="<%- index_mean.id %>" feedb_val_origin = "<%- index_mean.mean %>" feedb_where="means_update">
+                                                                                  <%- index_mean.mean %>
+                                                                             </span>
+
+                                                                             <!--//////-->
+                                                                             <% if( get_data_user(req.session.me) != null ){ %>
+                                                                              <a href="javascript:void(0)" class="btn_edit_mean_typeword btn-edit-gopy" id="btn_edit_mean_typeword_<%- index_mean.id %>"  data-toggle="modal" data-target="#btn_popup_mean_typeword_<%- index_mean.id %>"  feedb_userid = "<%- get_id_user() %>" feedb_link="insert_gopy_typeword_select" >
+                                                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                                              </a>
+                                                                              <% } %> 
+                                                                              <!--///Popup///-->
+                                                                              <div id="btn_popup_mean_typeword_<%- index_mean.id%>" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+
+                                                                                <div class="modal-dialog">
+                                                                                  <!-- Modal content-->
+                                                                                  <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                      <h4 class="modal-title">Góp ý</h4>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                    
+                                                                                        <div class="form-group">
+                                                                                            <label for="typeword_label">Type Word:</label><br>
+                                                                                             <select class="fs_18 select_typeword form-control" feedb_type_word_id="<%- index_mean.type_word %>" feedb_val_origin = "<%- get_type_word(index_mean.type_word) %>" feedb_where="types_word" id="typeword_label">
+                                                                                                <option value="">Select type word</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                    
+                                                                                        <div class="form-group">
+                                                                                          <label for="mean_label">Mean:</label>
+                                                                    
+                                                                                          <textarea feedb_val_origin = "<%- index_mean.mean %>" class="fs_18 textarea_data form-control textarea_mean" feedb_id="<%- index_mean.id %>" feedb_where="means_update" rows="5" id="mean_label"><%- index_mean.mean %></textarea>
+                                                                    
+                                                                                        </div>
+                                                                    
+                                                                    
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                    
+                                                                                      <button type="button" class="btn btn-default" id="btnsubmit_<%- index_mean.id %>" feedb_userid = "<%- get_id_user() %>" feedb_username = "<%- get_name_user() %>" feedb_link="insert_gopy_mean_typeword" role_user = "<%- get_role_user() %>" feedb_id="<%- index_mean.id %>" feedb_word_id = "<%- index.id%>"  >Góp ý</button>
+                                                                    
+                                                                                      <button type="button" class="btn btn-default" id="btncancel_<%- index_mean.id %>">Hủy bỏ</button>
+                                                                    
+                                                                    
+                                                                                    </div>
+                                                                                  </div>
+                                                                    
+                                                                                </div>
+                                                                              </div>
+                                                                              <!--//////-->
+
+                                                                              
+
+
+                                                                         </div>
+                                                                             <% 
+                                                                             num_count++
+                                                                         } %>
+                                                    
+                                                                         <% }) %>
+                                                                 </div>
+                                                                 <% } %>
+                                                                 <!--/mean-group-->
+
+                                                                  <!-- them mean -->
+                                                                  <% if( get_data_user(req.session.me) != null ){ %>
+                                                                    <div class="mean_typeword_insert_wrap" get_index="<%- index.id %>">
+
+                                                                        <button type="button" class="btn btn-default btn-sm btn-success-plus btn_mean_typeword_insert_<%- index.id %>" data-toggle="modal" data-target="#popup_mean_typeword_insert_<%- index.id %>" feedb_link="<%- get_base_url() %>/new_mean_typeword_insert_select" >Thêm ý nghĩa</button>
+
+
+                                                                        <div id="popup_mean_typeword_insert_<%- index.id %>" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+
+                                                                                <div class="modal-dialog">
+                                                                                  <!-- Modal content-->
+                                                                                  <div class="modal-content">
+                                                                          
+                                                                                    <div class="modal-header">
+                                                                                      <h4 class="modal-title">Thêm ý nghĩa</h4>
+                                                                                    </div>
+                                                                          
+                                                                                   <div class="modal-body">
+                                                                          
+                                                                                        <div class="form-group">
+                                                                                            <label for="typeword_label">Type Word:</label><br>
+                                                                                             <select class="fs_18 select_mean_typeword_insert_<%- index.id %> form-control" id="typeword_label">
+                                                                                                    <option value="">Chọn loại từ</option>
+                                                                                                    <option value="N/A" selected>N/A</option>
+                                                                                                    <option value="N">Danh từ</option>
+                                                                                                    <option value="EXP">Cụm từ</option>
+                                                                                                    <option value="N-PREP">Danh từ hoặc giới từ</option>
+                                                                                                    <option value="PREP">Giới từ</option>
+                                                                                                    <option value="ADJ">Tính từ</option>
+                                                                                                    <option value="EXC">Thán từ</option>
+                                                                                                    <option value="ADV">Trạng từ</option>
+                                                                                                    <option value="VERB-1">Động từ nhóm I</option>
+                                                                                                    <option value="VERB-2">Động từ nhóm II</option>
+                                                                                                    <option value="VERB-3">Động từ nhóm III</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                          
+                                                                                        <div class="form-group">
+                                                                                          <label for="mean_label">Mean:</label>
+                                                                                          <textarea class="fs_18 textarea_data form-control textarea_mean_typeword_insert_<%- index.id %>" rows="5" id="mean_label"></textarea>
+                                                                                        </div>
+                                                                          
+                                                                                    </div>
+                                                                          
+                                                                          
+                                                                                    <div class="modal-footer">
+
+                                                                                      <button type="button" class="btn btn-default" id="btnsubmit_mean_typeword_insert_<%- index.id %>" feedb_userid = "<%- get_id_user() %>" feedb_username = "<%- get_name_user() %>" link_return="<%- req.url %>"  feedb_id="<%- index.id %>" role_user = "<%- get_role_user() %>" >Thêm ý nghĩa</button>
+
+                                                                                      <button type="button" class="btn btn-default" id="btncancel_mean_typeword_insert_<%- index.id %>">Hủy bỏ</button>
+
+                                                                                    </div>
+                                                                          
+                                                                          
+                                                                                  </div>
+                                                                          
+                                                                                </div>
+                                                                              </div>
+                                                                               <!-- modal-dialog -->
+
+                                                                    </div>
+                                                                    <% } %>  
+                                                                  <!-- end them mean -->
+                                                    
+                                                                 <% var data_examples =  index.examples %>
+
+                                                                 <div class="exam-group">
+                                                                        <span class="lable-means">Câu ví dụ:</span>
+
+                                                                 <% if(data_examples!=null && data_examples.length > 0) { %>
+                                                    
+                                                                     <% if( index.flag == 'word' ) { 
+
+                                                                         var num_example = 1
+                                                    
+                                                                         data_examples.forEach(function(index_example){  %>
+                                                    
+                                                                             <% if( index_example.active == 2 ){ %>
+                                                    
+                                                                             <%
+                                                                             var example_view = index_example.example
+                                                    
+                                                                                 if( index_example.furigana != null && index_example.furigana != ''){
+                                                    
+                                                                                     example_view = ''
+                                                                                     
+                                                                                     var example_furigana =  index_example.furigana
+                                                    
+                                                                                     var example_split = example_furigana.split("{")
+                                                    
+                                                                                         example_split.forEach( (items_exam, items_index)=>{
+                                                                                         
+                                                                                         var pattern = new RegExp(':')
+                                                    
+                                                                                         if (pattern.test(items_exam)) {
+                                                    
+                                                                                             items_exam = items_exam.replace(":", "<rt>")
+                                                                                             items_exam = items_exam.replace("}", "</rt></ruby>")
+                                                                                             items_exam = items_exam.replace(items_exam, "<ruby>"+items_exam);    
+                                                                                         } 
+                                                                                         
+                                                                                         example_view = example_view + items_exam
+                                                                                         
+                                                                                     })
+                                                                             
+                                                    
+                                                                                 }
+                                                                             %>
+                                                                             
+                                                                             <div class="exam-item example_update" get_index='<%- index_example.id %>'>
+                                                                                 <span class="lable-nam">
+                                                                                     <%- num_example + ". " %>
+                                                                                 </span>
+                                                                                 <span class="exam-item-jp">
+                                                                                     
+                                                                                     <% if ( index_example.example || index_example.furigana ) { %><%- example_view %><% } %>
+                                                                                 </span>:
+                                                                                 <span class="exam-item-vn">
+                                                                                     
+                                                                                     <% if ( index_example.mean_exam) { %><%-  index_example.mean_exam %><% } %>
+                                                    
+                                                                                 </span>
+                                                                                 <% if( get_data_user(req.session.me) != null ){ %>
+                                                                                 <a href="javascript:void(0)" class="btn_edit_example btn-edit-gopy" id="btn_edit_example_<%- index_example.id %>"  data-toggle="modal" data-target="#btn_popup_example_<%- index_example.id %>"  feedb_userid = "<%- get_id_user() %>" feedb_link="" >
+                                                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                                                  </a>
+                                                                                  <% } %>  
+
+                                                                                <!--Formgopy-->
+                                                                                <div id="btn_popup_example_<%- index_example.id %>" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+
+                                                                                <div class="modal-dialog">
+                                                                                    <!-- Modal content-->
+                                                                                    <div class="modal-content">
+
+                                                                                    <div class="modal-header">
+                                                                                        <h4 class="modal-title">Góp ý</h4>
+                                                                                    </div>
+
+                                                                                    <div class="modal-body">
+                                                                                        <div class="form-group">
+                                                                                            <label for="exam_label">Example:</label>
+
+                                                                                            <textarea feedb_val_origin = "<%- index_example.example %>" class="fs_18 textarea_data form-control textarea_sentence" feedb_id="<%- index_example.id %>"  feedb_where="examples_update" rows="2" id="exam_label"></textarea>
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <label for="mean_ex_label">Ý Nghĩa:</label>
+
+                                                                                            <textarea feedb_val_origin = "<%- index_example.mean_exam %>" class="fs_18 textarea_data form-control textarea_mean_ex" feedb_id="<%- index_example.id %>"  feedb_where="examples_update" rows="2" id="mean_ex_label"></textarea>
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <label for="furi_label">Furigana:</label>
+
+                                                                                            <textarea feedb_val_origin = "<%- index_example.furigana %>" class="fs_18 textarea_data form-control textarea_furi" feedb_id="<%- index_example.id %>"  feedb_where="examples_update" rows="2" id="furi_label"></textarea>
+                                                                                        </div>
+                                                                                            <div class="form-group">
+                                                                                            <p style="font-size:14px !important">Hướng dẫn thêm Furigana : <br>
+                                                                                            Từ cần Furigana được đặt trong cặp dấu ngoặc nhọn "{}", và được phân cách bằng dấu hai chấm ":"<br>
+                                                                                            Ví dụ:<br>
+                                                                                            .....{犬:いぬ}...<br>
+                                                                                            </p>
+                                                                                            </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="modal-footer">
+
+                                                                                        <button type="button" class="btn btn-default" id="btnsubmit_exam_<%- index_example.id %>" feedb_userid = "<%- get_id_user() %>" feedb_username = "<%- get_name_user() %>" feedb_link="insert_gopy_example" role_user = "<%- get_role_user() %>" feedb_id="<%- index_example.id %>" feedb_word_id = "<%- index.id%>" >Góp ý</button>
+
+                                                                                        <button type="button" class="btn btn-default" id="btncancel_exam_<%- index_example.id %>">Hủy bỏ</button>
+                                                                                    </div>
+
+
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                </div>
+                                                                                <!--Formgopy-->
+
+
+                                                                             </div>
+                                                    
+                                                                             <% num_example++ } %>
+                                                                             <!-- active==2  -->
+                                                    
+                                                                             <% }) %>
+
+                                                                         
+                                                                    
+                                                                     <% } %>
+
+
+
+                                                                     <% if( index.flag == 'kanji' ) { %> 
+                                                                         <div class="kanji-exam-group">
+                                                                                 <div class="kanji-example-group">
+                                                                                     <table class="kanji-example">
+                                                                                         <thead>
+                                                                                             <tr>
+                                                                                                 <th class="col1 col-hide-sm">STT</th>
+                                                                                                 <th>TỪ</th>
+                                                                                                 <th class="col-hide-sm">HIRAGANA</th>
+                                                                                                 <th>HÁN VIỆT</th>
+                                                                                                 <th>NGHĨA</th>
+                                                                                             </tr>
+                                                                                         </thead>
+                                                                                         <tbody>
+                                                                                             
+                                                                                             <% 
+                                                                                                 var num_example_kanji = 1  
+                                                                                                 data_examples.forEach(function(index_example){  %>
+                                                                                                 <% if( index_example.active == 2 ){ %>
+                                                                                             <tr>
+                                                                                                 <td class="example_num col-hide-sm"><%- num_example_kanji + '. ' %></td>
+                                                                                                 <td class="example_kanji"><%- index_example.example %></td>
+                                                                                                 <td class="example_hira col-hide-sm"><%- index_example.example_hira %></td>
+                                                                                                 <td class="example_pinyin"><%- index_example.mean_pinyin %></td>
+                                                                                                 <td class="example_mean_ex"><%- index_example.mean_exam %></td>
+                                                                                             </tr>
+                                                                                             <% num_example_kanji ++ } %> 
+                                                                                             <% }) %>
+                                                    
+                                                                                         </tbody>
+                                                                                     </table>
+                                                                                 </div>
+                                                                             </div>
+                                                                             <!--/kanji-exam-group-->
+                                                                     <% } %>    
+                                                    
+                                                    
+                                                                 <% } %>
+
+
+                                                                             <!-- examples Insert -->
+                                                                        <% if( get_data_user(req.session.me) != null ){ %>
+                                                                          
+                                                                            <div class="example_insert_wrap" get_index="<%- index.id %>">
+
+                                                                                    <button type="button" class="btn btn-default btn-sm btn-success-plus btn_example_insert_<%- index.id %>" data-toggle="modal" data-target="#popup_example_insert_<%- index.id %>" >Thêm ví dụ</button>
+                                                                              
+                                                                                    <div id="popup_example_insert_<%- index.id %>" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+                                                                              
+                                                                                      <div class="modal-dialog">
+                                                                                        <!-- Modal content-->
+                                                                                        <div class="modal-content">
+                                                                              
+                                                                                          <div class="modal-header">
+                                                                                            <h4 class="modal-title">Thêm ví dụ</h4>
+                                                                                          </div>
+                                                                              
+                                                                                          <div class="modal-body">
+                                                                                              <div class="form-group">
+                                                                                                <label for="exam_label">Example:</label>
+                                                                                                <textarea class="fs_18 textarea_data form-control textarea_sentence_insert_<%- index.id %>"  rows="2" id="exam_label"></textarea>
+                                                                                              </div>
+                                                                              
+                                                                                              <div class="form-group">
+                                                                                                <label for="mean_ex_label">Ý Nghĩa:</label>
+                                                                                                <textarea class="fs_18 textarea_data form-control textarea_mean_ex_insert_<%- index.id %>"  rows="2" id="mean_ex_label"></textarea>
+                                                                                              </div>
+                                                                              
+                                                                                              <div class="form-group">
+                                                                                                <label for="furi_label">Furigana:</label>
+                                                                                                <textarea class="fs_18 textarea_data form-control textarea_furi_insert_<%- index.id %>" rows="2" id="furi_label"></textarea>
+                                                                                              </div>
+                                                                                 <div class="form-group">
+                                                                                 <p style="font-size:14px !important">Hướng dẫn thêm Furigana : <br>
+                                                                                 Từ cần Furigana được đặt trong cặp dấu ngoặc nhọn "{}", và được phân cách bằng dấu hai chấm ":"<br>
+                                                                                 Ví dụ:<br>
+                                                                                 .....{犬:いぬ}...<br>
+                                                                                 </p>
+                                                                                 </div>
+                                                                              
+                                                                                          </div>
+                                                                              
+                                                                              
+                                                                                          <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-default" id="btnsubmit_example_insert_<%- index.id %>" feedb_userid = "<%- get_id_user() %>" feedb_username="<%- get_name_user() %>" link_return="<%- req.url %>"  feedb_id="<%- index.id %>" role_user = "<%- get_role_user() %>" >Thêm ví dụ </button>
+                                                                                            <button type="button" class="btn btn-default" id="btncancel_example_insert_<%- index.id %>">Hủy bỏ</button>
+                                                                                          </div>
+                                                                              
+                                                                              
+                                                                                        </div>
+                                                                              
+                                                                                      </div>
+                                                                                    </div>
+                                                                                     <!-- modal-dialog -->
+                                                                              
+                                                                              
+                                                                        </div>
+                                                                            
+                                                                        <% } %>
+                                                                        <!-- End examples Insert -->     
+
+
+                                                                </div>
+                                                                <!--/exam-group-->          
+
+
+                                                         </div>
+                                                         <% }) %>
+                                                         
+                                                      <% }else{ 
+                                                          
+                                                            if( data_google ){ %>
+
+                                                                <div class="autosearch-wrap">
+
+                                                                            <%
+                                                                                if( data_google.type_trans == 2 ){ %>
+                                                                                
+                                                                                <div class="autosearch_searchvalue"> <%- data_google.orig %></div>
+                                                                                <div class="autosearch_src_translit"><%- data_google.translit %></div> 
+                                                                                <div class="autosearch_trans mgt-10"><%- data_google.trans %></div>
+                                                                
+                                                                            <% }else{ %>
+                                                                                
+                                                                                <div class="autosearch_searchvalue"> <%- data_google.orig %></div>
+                                                                                <div class="autosearch_trans mgt-10"><%- data_google.trans %></div>
+                                                                                <div class="autosearch_translit"><%- data_google.translit %></div> 
+                                                                
+                                                                            <% } %>
+                                                                    
+                                                                        <span class="autosearch-label">Dịch tự động</span>
+                                                                </div><!--/autosearch-wrap-->
+
+                                                                <form method="POST" action="./create_add_word" accept-charset="UTF-8">
+
+                                                                    
+
+                                                                    <div class="primary-content-text  result-text" style="margin-top:15px; padding:15px;font-size: 17px;">
+                                                                        <p style="background:#fff;">
+                                                                           Không có kết quả cho: <strong><%- data_word_search %></strong>. <br>
+                                                                           Bạn có thể yêu cầu từ này bằng cách ấn vào nút yêu cầu từ bên dưới<br>
+                                                                           <button  type="submit" name="is_submit" value="is_submit" class="btn btn-primary" id="submit-contact"> <i class="fa fa-paper-plane"></i> Yêu cầu từ </button>
+                                                                        </p>
+                                                                     </div> 
+
+
+                                                                     <!-- gopy -->
+                                                                     <div class="primary-content-text  result-text" style="margin-top:20px;padding:15px 20px;font-size: 17px !important;">
+                                                                        Bổ sung thêm thông tin cho từ này nếu bạn biết!
+
+                                                                        <!-- 1 -->
+                                                                        <div class="row">
+      
+                                                                            <div class="col-md-12">
+
+                                                                               <div class="form-group">
+                                                                                 <input id="name" name="name" class="form-control input-lg" type="hidden"  value="" >
+                                                                                 <input  name="user_id" class="form-control" type="hidden" value="" >
+                                                                                 <input  name="user_role" class="form-control" type="hidden" value="0" >
+                                                                                 <input  name="search_value" class="form-control" type="hidden" value="<%- wordcheck.word_search %>" >
+                                                                                 <input  name="url_old" class="form-control" type="hidden" value="" >
+                                                                                 <input id="user_ip" name="user_ip" class="form-control" type="hidden" value="" >    
+                                                                               </div>
+
+                                                                            </div>
+                                                                            
+                                                                          
+                                                                             <!-- kanji     -->
+                                                                             <div class="form-group <%- (wordcheck.kanji.isset == 1 && wordcheck.kanji.word != '') ? 'show':'hidden'  %> ">
+                                                                                <label> Kanji </label>
+                                                                                <input id="kanji" name="kanji" class="form-control input-lg" type="text"  value="<%- (wordcheck.kanji.isset == 1 && wordcheck.kanji.word != '') ? wordcheck.word_search:''  %>">
+                                                                            </div>
+                                                                            <!-- end kanji     -->
+
+                                                                            <!-- hiragana -->
+                                                                            <div class="form-group <%- (wordcheck.hiragana.isset == 1 && wordcheck.hiragana.word != '') ? 'show':'hidden'  %> ">
+                                                                                    <label > Hiragana</label>
+                                                                                    <input id="hiragana" name="hiragana" class="form-control input-lg"  type="text"   value="<%- (wordcheck.hiragana.isset == 1 && wordcheck.hiragana.word != '') ? wordcheck.word_search:''  %>">
+                                                                            </div>
+                                                                            <!-- End hiragana -->
+
+                                                                            <!-- katakana -->
+                                                                            <div class="form-group <%- (wordcheck.katakana.isset == 1 && wordcheck.katakana.word != '') ? 'show':'hidden' %> ">
+                                                                                    <label > Katakana</label>
+                                                                                    <input  id="katakana" name="katakana" class="form-control input-lg" type="text"  value="<%- (wordcheck.katakana.isset == 1 && wordcheck.katakana.word != '') ? wordcheck.word_search:'' %>" >
+                                                                                </div>
+                                                                           <!-- End katakana -->
+
+                                                                           <!-- Romaji -->
+                                                                           <div class="form-group <%- (wordcheck.romaji.isset == 1 && wordcheck.romaji.word != '') ? 'show':'hidden' %> ">
+                                                                                <label > Romaji</label>
+                                                                                <input id="romaji" name="romaji" class="form-control input-lg" type="text"  value="<%- (wordcheck.romaji.isset == 1 && wordcheck.romaji.word != '') ? wordcheck.word_search:'' %>" >
+                                                                            </div>
+                                                                            <!-- End Romaji -->
+
+                                                                            <!-- vi -->
+                                                                            <div class="form-group <%- (wordcheck.vi.isset == 1 && wordcheck.vi.word != '') ? 'show':'hidden' %>">
+                                                                                 <label > Ý nghĩa hoặc Tiếng Việt</label>
+                                                                                  <input  id="mean[]" name="mean[]" class="form-control input-lg" type="text"  value="<%- (wordcheck.vi.isset == 1 && wordcheck.vi.word != '') ? wordcheck.word_search:'' %>">
+                                                                            </div>
+                                                                            <!-- End vi -->
+
+                                                                            <!-- Nutbamxuathien -->
+                                                                            <%  if (wordcheck.vi.isset == 0 ) { %>
+                                                                            <button type="button" class="btn_add_new_word btn btn-default add_field_button_vi"><i class="fa fa-plus" aria-hidden="true"></i> Ý nghĩa</button>
+                                                                            <% } %>
+
+                                                                            <button  type="button" class="btn_add_new_word btn btn-default add_field_button_exam"><i class="fa fa-plus" aria-hidden="true"></i> Mẫu câu</button>
+                                                                            <!-- End Nutbamxuathien -->
+
+                                                                            <!-- inputaddfiel -->
+                                                                            <div class="input_fields_wrap_vi"></div>
+                                                                            <div class="input_fields_wrap_exam"></div>
+                                                                            <!-- End inputaddfiel -->
+
+                                                                            <div class="form-group">
+                                                                                    <button  type="submit" name="is_submit" value="is_submit" class="btn btn-primary" id="submit-contact"> <i class="fa fa-paper-plane"></i> Bổ sung thông tin </button>
+                                                                            </div>
+
+                                                                      
+                                                                         </div>
+                                                                          <!-- End 1 -->
+
+                                                                     </div>
+                                                                     <!-- End gopy -->
+
+
+                                                                </form>    
+
+                                                                
+
+                                                           <% } 
+                                                      } %>
+                                                      
+                                                     
+                                                </div>
+                                                <!--***********end tuvung*************-->
+
+                                                <!--***********hantu*************-->
+                                                <div id="hantu" class="tab-pane fade">
+
+                                                    <ul class="nav nav-pills">
+                                                       <% if( data_kanjis.length > 0 ){ %>
+                                                        <%
+                                                        data_kanjis.forEach( (index_kanji, num_kanji)=>{ %>
+                                                            <li class="<%- (num_kanji == 0) ? "active":""  %>">
+                                                                <a data-toggle="pill" href="#<%- index_kanji.id  %>"><%- index_kanji.kanji %></a>
+                                                            </li>
+                                                       <% }) %>
+                                                        <% } %> 
+                                                    </ul>
+
+                                                    <div class="tab-content">
+                                                    <% if( data_kanjis.length > 0 ){ %>
+                                                        <%
+                                                        data_kanjis.forEach( (index_kanji, num_kanji)=>{ %>   
+                                                        <div id="<%- index_kanji.id  %>" class="tab-pane fade in <%- (num_kanji == 0) ? "active":""  %>">
+                                                            <div class="primary-content-text-kanji">
+                                                                <div class="kanji-kanjidraw-group">
+                                                                    <div class="row">
+                                                                        <div class="col-md-7  col-xs-12">
+                                                                            <div class="kanji-kanji-group">
+                                                                                <div class="kanji-item kanji-kanji"><%- index_kanji.kanji %></div>
+                                                                                <div class="kanji-item">
+                                                                                    <span class="kj-label">Bộ:</span>
+                                                                                    <span class="kj-cnt">
+                                                                                        <% if( index_kanji.kanji_options.pinyin != null ){ %>
+                                                                                            <%- index_kanji.kanji_options.pinyin.name_kanji %> - <%- index_kanji.kanji_options.pinyin.name_vi %>
+                                                                                       <% } %>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="kanji-item">
+                                                                                    <span class="kj-label">訓 [kunyomi]:</span>
+                                                                                    <span class="kj-cnt">
+                                                                                       
+                                                                                         <% if( index_kanji.kanji_options.kunyomi != null ){ %>
+
+                                                                                          <%  var kunyomi = JSON.parse(index_kanji.kanji_options.kunyomi)
+                                                                                          
+                                                                                             for( var key in kunyomi ) { %>
+                                                                                                   <%-key%> [<%-kunyomi[key]%>]　
+                                                                                             <% }
+                                                                                          
+                                                                                          %>
+        
+                                                                                        <% } %>
+                                                                                       
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="kanji-item">
+                                                                                    <span class="kj-label">音 [onyomi]:</span>
+                                                                                    <span class="kj-cnt">
+                                                                                            <% if( index_kanji.kanji_options.onyomi != null ){ %>
+
+                                                                                                <%  var onyomi = JSON.parse(index_kanji.kanji_options.onyomi)
+                                                                                                
+                                                                                                   for( var key in onyomi ) { %>
+                                                                                                         <%-key%> [<%-onyomi[key]%>]　
+                                                                                                   <% }
+                                                                                                
+                                                                                                %>
+              
+                                                                                              <% } %>
+
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="kanji-item">
+                                                                                    <span class="kj-label">Số nét:</span>
+                                                                                    <span class="kj-cnt">
+                                                                                             <% if( index_kanji.kanji_options.strokes != null ){ %>
+                                                                                                <%- index_kanji.kanji_options.strokes %>
+                                                                                              <% } %>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="kanji-item">
+                                                                                    <span class="kj-label">JLPT:</span>
+                                                                                    <span class="kj-cnt">
+                                                                                            <% if( index_kanji.kanji_options.jlpt != null ){ %>
+                                                                                                <%- index_kanji.kanji_options.jlpt %>
+                                                                                              <% } %>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="kanji-item">
+                                                                                    <% if( index_kanji.kanji_options.pinyins != null ){
+                                                                                     var pinyins = index_kanji.kanji_options.pinyins   
+                                                                                    %>
+
+                                                                                        <span class="kj-label d-block">Bộ thành phần:</span>
+
+
+                                                                                        <% pinyins.forEach( (pinyin, num_pinyin)=>{
+                                                                                            num_pinyin++
+                                                                                            %>
+                                                                                            
+                                                                                            <span class="kj-cnt d-block">
+                                                                                                    <%-num_pinyin%>. 「<%-pinyin.name_kanji%>」 <%-pinyin.name_vi%>
+                                                                                            </span>
+
+                                                                                       <% }) %>     
+                                                                                    <% } %>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--/kanji-kanji-group-->
+                                                                        </div>
+                                                                        <div class="col-md-5  col-xs-12">
+                                                                            <div class="kanji-draw-group">
+                                                                                Cách viết hán tự
+                                                                                <br> (Chức năng này đang được cập nhật)
+                                                                            </div>
+                                                                            <!--/kanji-draw-group-->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!--/kanji-draw-group-->
+                                                                <% var data_means_kanji =  index_kanji.means;
+
+                                                                if(data_means_kanji!=null && data_means_kanji.length > 0) { %>
+
+                                                                <div class="kanji-mean-group">
+                                                                    <div class="kanji-mean-label">Giải nghĩa:</div>
+                                                                    <% 
+                                                                    var num_count_kanji = 1
+                                                                    data_means_kanji.forEach(function(index_mean_kanji){ 
+                                                                    %>
+                                                                   
+                                                                    <% if (index_mean_kanji.mean && index_mean_kanji.active==2  ){ %>
+
+                                                                    <div class="kanji-mean-item">
+                                                                        <span class="kanji-mean-item-icon"><%- num_count_kanji + '. ' %></span>
+                                                                        <span class="kanji-mean-item-cnt"> <%- index_mean_kanji.mean %></span>
+                                                                    </div>
+
+
+                                                                    <% num_count_kanji++ } %>
+
+                                                                    <% }) %> 
+                                                                    
+                                                                </div>
+                                                                <% } %>
+                                                                <!--/kanji-mean-group-->
+
+
+                                                                
+                                                                <% var data_examples_kanji =  index_kanji.examples;
+
+                                                                 if(data_examples_kanji!=null && data_examples_kanji.length > 0) { %>
+                                                                
+                                                                <div class="kanji-exam-group">
+                                                                    <div class="kanji-example-group">
+                                                                        <table class="kanji-example">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th class="col1 col-hide-sm">STT</th>
+                                                                                    <th>TỪ</th>
+                                                                                    <th class="col-hide-sm">HIRAGANA</th>
+                                                                                    <th>HÁN VIỆT</th>
+                                                                                    <th>NGHĨA</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+
+                                                                                <%  
+                                                                                var num_example_kanji = 1
+
+                                                                                data_examples_kanji.forEach(function(data_examples_kanji){ %>  
+                                                                                   
+                                                                                   <% if( data_examples_kanji.active ==2 ){ %>     
+
+                                                                                    <tr>
+                                                                                        <td class="example_num col-hide-sm"><%- num_example_kanji + '. ' %></td>
+                                                                                        <td class="example_kanji"><%- data_examples_kanji.example %></td>
+                                                                                        <td class="example_hira col-hide-sm"><%- data_examples_kanji.example_hira %></td>
+                                                                                        <td class="example_pinyin"><%- data_examples_kanji.mean_pinyin %></td>
+                                                                                        <td class="example_mean_ex"><%- data_examples_kanji.mean_exam %></td>
+                                                                                    </tr>
+
+                                                                                   
+
+
+                                                                                <% num_example_kanji++ } %>
+
+                                                                                <% })%>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <!--/wokanji-example-group-->
+                                                                </div>
+                                                                <!--/kanji-exam-group-->
+                                                                <% } %>
+
+
+
+                                                            </div>
+                                                        </div>
+                                                        <!--/one kanji-->
+
+                                                        <% }) %>
+
+                                                        <% } %> 
+
+                                                    </div>
+                                                    <!--/tab-content-->
+                                                </div>
+                                                <!--***********end hantu*************-->
+
+                                                <!--***********maucau*************-->
+                                                <div id="maucau" class="tab-pane fade">
+
+                                                    <% if( data_words.length > 0 ){ %>
+
+                                                        <% data_words.forEach(function(index, num){ %>
+
+                                                            <% var data_examples =  index.examples;
+                                                            if(data_examples!=null && data_examples.length > 0) { %>
+
+                                                                <!-- flag=word -->
+                                                                  <% if( index.flag == 'word' ) { %>
+
+                                                                     <div class="exam-group">
+                                                                    
+                                                                      <% data_examples.forEach(function(index_example){  %>
+                                                                            <% if( index_example.active == 2 ){ %>
+                                                                            <%
+                                                                            var example_view = index_example.example
+    
+                                                                                if( index_example.furigana != null && index_example.furigana != ''){
+    
+                                                                                    example_view = ''
+                                                                                    
+                                                                                    var example_furigana =  index_example.furigana
+    
+                                                                                    var example_split = example_furigana.split("{")
+    
+                                                                                        example_split.forEach( (items_exam, items_index)=>{
+                                                                                        
+                                                                                        var pattern = new RegExp(':')
+    
+                                                                                        if (pattern.test(items_exam)) {
+    
+                                                                                            items_exam = items_exam.replace(":", "<rt>")
+                                                                                            items_exam = items_exam.replace("}", "</rt></ruby>")
+                                                                                            items_exam = items_exam.replace(items_exam, "<ruby>"+items_exam);    
+                                                                                        } 
+                                                                                        
+                                                                                        example_view = example_view + items_exam
+                                                                                        
+                                                                                    })
+                                                                            
+    
+                                                                                }
+                                                                            %>
+                                                                            <div class="exam-item">
+                                                                                <span class="lable-nam">+</span>
+                                                                                <span class="exam-item-jp"><% if ( index_example.example || index_example.furigana ) { %><%- example_view %><% } %></span>:
+                                                                                <span class="exam-item-vn"> <% if ( index_example.mean_exam) { %><%-  index_example.mean_exam %><% } %></span>
+                                                                            </div>
+                                                                            <% } %>
+                                                                        <% }) %>
+
+                                                                       
+                                                                  </div>
+                                                                  <% } %>
+                                                                   <!-- end flag=word -->
+
+                                                                    <!-- end flag=kanji -->
+                                                                   <% if( index.flag == 'kanji' ) { %>
+
+                                                                    <div class="kanji-exam-group">
+                                                                            <div class="kanji-example-group">
+                                                                                <table class="kanji-example">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th class="col1 col-hide-sm">STT</th>
+                                                                                            <th>TỪ</th>
+                                                                                            <th class="col-hide-sm">HIRAGANA</th>
+                                                                                            <th>HÁN VIỆT</th>
+                                                                                            <th>NGHĨA</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        
+                                                                                        <% 
+                                                                                            var num_example_kanji = 1  
+                                                                                            data_examples.forEach(function(index_example){  %>
+                                                                                            <% if( index_example.active == 2 ){ %>
+                                                                                        <tr>
+                                                                                            <td class="example_num col-hide-sm"><%- num_example_kanji + '. ' %></td>
+                                                                                            <td class="example_kanji"><%- index_example.example %></td>
+                                                                                            <td class="example_hira col-hide-sm"><%- index_example.example_hira %></td>
+                                                                                            <td class="example_pinyin"><%- index_example.mean_pinyin %></td>
+                                                                                            <td class="example_mean_ex"><%- index_example.mean_exam %></td>
+                                                                                        </tr>
+
+                                                                                       
+
+                                                                                        <% num_example_kanji ++ } %> 
+                                                                                        <% }) %>
+
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/kanji-exam-group-->
+
+
+                                                                   <% } %> 
+
+                                                        <% } %>
+
+                                                    <% }) %>
+
+                                                    <!--/exam-group-->
+                                                    <% } %>
+
+                                                    
+
+                                                </div>
+                                                <!--***********end maucau*************-->
+
+                                               
+                                            </div>
+                                            <!--/tab-content-->
+                                            
+
+
+                                        </div>
+                                        <!--/content-left-->
+                                    </div>
+                                    <div class="col-md-3">
+                                        <!--content-right-->
+                                        <div class="content-right">
+                                            <div class="sidebox-first">
+                                                <h3 class="sidebox-title-first uppercase">Từ điển của tôi</h3>
+                                                <div class="sidebox-cont sidebox-cont1 mgt-10">
+                                                    Tạo và chia sẻ danh sách từ của riêng bạn
+                                                </div>
+                                                <div class="register-box mgt-20">
+                                                   
+
+                                                    <% if(req.session.me) {
+                                                        
+                                                        var data_user_session = JSON.parse(req.session.me)
+
+                                                        if(data_user_session!=null && data_user_session.length > 0) {
+
+                                                            for ( var i in data_user_session ) { %>
+                                                               
+                                                                <div class="sidebox-cont sidebox-cont1">  Chào: <%- data_user_session[i].display_name %> </div>
+                                                                <a href="./logout?url=<%- req.url %>" class="signout-btn hover" onclick="return confirm('Bạn muốn đăng xuất !?')" style="z-index: 800;">Đăng xuất</a>
+                                                          <%  }
+                                                                
+                                                        }
+
+                                                    %>
+                                                       
+                                                   <% }else{ %>
+                                                    <a href="#" class="regis-btn hover">Đăng ký ngay</a>
+                                                    <a href="#" class="sign-in-btn hover" data-toggle="modal" data-target="#login_gopy">Đăng nhập</a>
+                                                   <% } %>                                                                
+                                                    
+                                                    
+                                                     
+                                                </div>
+                                            </div>
+                                            <!--/sidebox-first-->
+                                            <div class="sidebox">
+                                                <h3 class="sidebox-title-style1 uppercase">Cập nhật góp ý</h3>
+                                                <div class="sidebox-info">
+                                                    <div class="side-info-row">
+                                                        <span class="side-info-name">謎</span>:
+                                                        <span class="side-info-infodetail">謎がとけた</span>
+                                                        <br />
+                                                        <span class="side-info-user-up">
+                                                            vu_xuan_lam đã góp ý 8 phút trước
+                                                        </span>
+                                                    </div>
+                                                    <!--/side-info-row-->
+                                                    <div class="side-info-row">
+                                                        <span class="side-info-name">いとま</span>:
+                                                        <span class="side-info-infodetail">ー　暇　ひま</span>
+                                                        <br />
+                                                        <span class="side-info-user-up">
+                                                            dinhthoan22 đã góp ý 18 phút trước
+                                                        </span>
+                                                    </div>
+                                                    <!--/side-info-row-->
+                                                    <div class="side-info-row">
+                                                        <span class="side-info-name">反抗的</span>:
+                                                        <span class="side-info-infodetail">Cứng đầu khó bảo</span>
+                                                        <br />
+                                                        <span class="side-info-user-up">
+                                                            Eck đã góp ý 33 phút trước
+                                                        </span>
+                                                    </div>
+                                                    <!--/side-info-row-->
+                                                    <div class="side-info-row">
+                                                        <span class="side-info-name">いとま</span>:
+                                                        <span class="side-info-infodetail">ー　暇　ひま</span>
+                                                        <br />
+                                                        <span class="side-info-user-up">
+                                                            dinhthoan22 đã góp ý 18 phút trước
+                                                        </span>
+                                                    </div>
+                                                    <!--/side-info-row-->
+                                                </div>
+                                                <a class="readmore hover" href="#">Xem tiếp
+                                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                            <!--/sidebox-->
+                                            <div class="sidebox">
+                                                <h3 class="sidebox-title-style1 uppercase">Hỏi đáp</h3>
+                                                <div class="sidebox-info">
+                                                    <div class="side-info-row">
+                                                        <span class="side-info-name">謎</span>:
+                                                        <span class="side-info-infodetail">謎がとけた</span>
+                                                        <br />
+                                                        <span class="side-info-user-up">
+                                                            vu_xuan_lam đã góp ý 8 phút trước
+                                                        </span>
+                                                    </div>
+                                                    <!--/side-info-row-->
+                                                    <div class="side-info-row">
+                                                        <span class="side-info-name">いとま</span>:
+                                                        <span class="side-info-infodetail">ー　暇　ひま</span>
+                                                        <br />
+                                                        <span class="side-info-user-up">
+                                                            dinhthoan22 đã góp ý 18 phút trước
+                                                        </span>
+                                                    </div>
+                                                    <!--/side-info-row-->
+                                                    <div class="side-info-row">
+                                                        <span class="side-info-name">反抗的</span>:
+                                                        <span class="side-info-infodetail">Cứng đầu khó bảo</span>
+                                                        <br />
+                                                        <span class="side-info-user-up">
+                                                            Eck đã góp ý 33 phút trước
+                                                        </span>
+                                                    </div>
+                                                    <!--/side-info-row-->
+                                                    <div class="side-info-row">
+                                                        <span class="side-info-name">いとま</span>:
+                                                        <span class="side-info-infodetail">ー　暇　ひま</span>
+                                                        <br />
+                                                        <span class="side-info-user-up">
+                                                            dinhthoan22 đã góp ý 18 phút trước
+                                                        </span>
+                                                    </div>
+                                                    <!--/side-info-row-->
+                                                </div>
+                                                <a class="readmore hover" href="#">Xem tiếp
+                                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                            <!--/sidebox-->
+                                            <div class="sidebox">
+                                                <div class="fb-fanpage">
+                                                    Facebook
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/content-right-->
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- end section -->
+                        <!-- footer -->
+                        <footer class="footer-area">
+                            <div class="container-fluid">
+                                <div class="footer-wrapper-child row">
+                                    <!-- footer navigation -->
+                                    <div class="footer-navi-child">
+                                        <ul class="nav nav-pills">
+                                            <li role="presentation">
+                                                <a href="#">Thông Tin</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#">Hỏi Đáp</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#">Góp Ý</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#">Liên Hệ</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- end footer navigation -->
+                                    <!-- copyright -->
+                                    <div class="footer-copyright-child">
+                                        <p>Copyright © Rakuji. All Rights Reserved.</p>
+                                    </div>
+                                    <!-- end copyright -->
+                                </div>
+                            </div>
+                        </footer>
+                        <!-- end footer -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end container -->
+    <%- partial('layouts/loginform') %>
+    <%- partial('layouts/footer_child') %>

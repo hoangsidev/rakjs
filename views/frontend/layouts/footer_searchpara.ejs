@@ -1,0 +1,128 @@
+<!-- footer -->
+<footer class="footer-area">
+        <div class="container-fluid">
+           <div class="footer-wrapper-child row">
+              <!-- footer navigation -->
+              <div class="footer-navi-child">
+                 <ul class="nav nav-pills">
+                    <li role="presentation"> <a class="notclick" href="#">Thông Tin</a> </li>
+                    <li role="presentation"> <a class="notclick" href="#">Hỏi Đáp</a> </li>
+                    <li role="presentation"> <a class="" href="javascript:void(0)">Góp Ý</a> </li>
+                    <li role="presentation"> <a class="" href="javascript:void(0)">Liên Hệ</a> </li>
+                 </ul>
+              </div>
+              <!-- end footer navigation --> 
+              <!-- copyright -->
+              <div class="footer-copyright-child">
+                 <p>Copyright © Rakuji. All Rights Reserved.</p>
+              </div>
+              <!-- end copyright -->
+           </div>
+        </div>
+     </footer>
+     <!-- end footer -->
+  </div>
+</div>
+</div>
+</div>
+</div>
+<!-- end container -->
+
+</div>  
+<!-- end wrapper -->  
+
+<!--Quick search-->
+<div id="quick-search-box" style="display:none;"></div>
+
+<span class='highlighter-container'>
+    <div>
+      <a class="quick-search" href="#quick-search-box">
+              <img style="position:absolute;z-index:999" src="frontend/images/quicksearch.png">
+      </a>
+    </div>
+</span>
+<!--End Quick search-->
+
+
+
+<!-- script -->
+
+<script src="frontend/js/script.js"></script>
+<script src="frontend/js/scripts.js"></script>
+
+
+
+
+<script>
+        $(document).ready(function() {
+
+        //Search doan van
+        searchpara();
+
+        /////////Quick search//////////////
+            $('.wrapper').highlighter({
+           'selector': '.highlighter-container',
+           'minWords': 0,
+           'complete': function (data) { 
+    
+            $.ajax({
+                type:"POST",
+                url: "/quicksearch", 
+                data:{value: data},
+                success: function(result){
+                    
+                    if( result !='' ){
+                        $("#quick-search-box").html(result);
+                    }else{
+                        var note = 'Không tìm thấy kết quả!';
+                        $("#quick-search-box").html(note);
+                    }
+                }
+                
+            })         
+           }
+        });
+        /////////End Quick search//////////////
+    
+    
+        });
+    </script>
+    
+    
+    <script src="frontend/js/jPushMenu.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            
+            $('.toggle-menu').jPushMenu();
+
+            //Cân bằng scroll trong serach dona van
+        var isSyncingLeftScroll = false;
+		var isSyncingRightScroll = false;
+		var leftDiv = document.getElementById('search-pagagraph-source');
+		var rightDiv = document.getElementById('search-pagagraph-target');
+		
+		leftDiv.onscroll = function() {
+			if (!isSyncingLeftScroll) {
+			isSyncingRightScroll = true;
+			rightDiv.scrollTop = this.scrollTop;
+		  }
+		  isSyncingLeftScroll = false;
+		}
+		
+		rightDiv.onscroll = function() {
+			if (!isSyncingRightScroll) {
+			isSyncingLeftScroll = true;
+			leftDiv.scrollTop = this.scrollTop;
+		  }
+		  isSyncingRightScroll = false;
+		}	  		
+
+
+
+        });
+    </script>
+
+
+<!-- end script -->
+</body>
+</html>

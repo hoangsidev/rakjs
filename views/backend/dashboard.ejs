@@ -1,0 +1,100 @@
+<%- partial('./layouts/header') %>
+    <div id="wrapper">
+        <%- partial('./layouts/sidebar') %>
+            <div id="wrapper_primary">
+                <!-- content -->
+                <div class="rows">
+                    <%- partial('./layouts/breadcrumb') %>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <% if(req.session.me) {
+                                var data_user_session = JSON.parse(req.session.me);
+                                if(data_user_session!=null && data_user_session.length > 0) {
+                                data_user_session.forEach(function(index_session){ %>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Chào mừng <%- get_role(index_session.role) %> 
+                                    <strong>
+                                        <% if (index_session.display_name) { %>
+                                            <%= index_session.display_name %>
+                                                <% } %>
+                                    </strong> đến với trang quản trị của Rakuji.</div>
+                                <div class="panel-body">
+                                        <label class="label label-primary">Hệ thống từ điển Nhật - Việt Rakuji</label>
+                                    
+                                    <ul style="padding-left: 20px;margin-top: 10px;">
+                                        <li>
+                                            Được xây dựng bằng nền tảng Node.js</li>
+                                            <li>Sử dụng Framework Sails.js</li>
+                                            <li>Hệ cơ sở dữ liệu MongoDB</li>
+                                            <li>Hệ thống lưu trữ Redis</li>
+                                            <li>Công nghệ Realtime Socket.io</li>
+                                            <li>Người phát triển : Phạm Vũ & Hoàng Sĩ</li>
+                                       
+                                </div>
+                            </div>
+                            <% })}}%>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Thống kê</strong>
+                            </div>
+                            <div class="panel-body">
+                                <label class="label label-danger">Đóng góp của Người dùng</label>
+                                
+                                <ul style="padding-left: 20px;margin-top: 10px;">
+                                    <li>
+                                        <strong><% if (count_approvals) { %><%= count_approvals %><% } else { %>0<% } %></strong> Từ vựng mới cần được
+                                        <a class="alert-link" href="<%= get_base_url_admin() %>/approvals/page/1">duyệt</a>
+                                    </li>
+                                    <li>
+                                        <strong>185</strong> góp ý Kanji cần được
+                                        <a class="alert-link" href="<%= get_base_url_admin() %>/approvals/page/1">duyệt</a>
+                                        <li>
+                                            <strong>185</strong> góp ý Mẫu ví dụ cần được
+                                            <a class="alert-link" href="<%= get_base_url_admin() %>/approvals/page/1">duyệt</a>
+                                </ul>
+                                <hr>
+                                <label class="label label-primary">Thông tin từ vựng</label>
+                               
+                                <ul style="padding-left: 20px;margin-top: 10px;">
+                                        <li>
+                                            <strong><% if (count_words) { %><%= count_words %><% } %></strong> Từ vựng</li>
+                                        <li>
+                                            <strong><% if (count_kanjis) { %><%= count_kanjis %><% } %></strong> Kanji</li>
+                                        <li>
+                                            <strong><% if (count_examples) { %><%= count_examples %><% } %></strong> Mẫu ví dụ</li>
+
+                                            <li>
+                                                    <strong>16</strong> <a href="<%= get_base_url_admin() %>/feedback/">Góp ý & phản hồi về trang web</a></li>
+                                    </ul>
+
+                                </ul>
+                                <hr>
+                               
+                                <label class="label label-primary">Thông tin Người dùng</label>
+                               
+                                <ul style="padding-left: 20px;margin-top: 10px;">
+                                        <li>
+                                            <strong><% if (count_guest) { %><%= count_guest %><% } else { %>0<% } %></strong> Người dùng</li>
+                                        <li>
+                                            <strong><% if (count_author) { %><%= count_author %><% } else { %>0<% } %></strong> Biên tập viên</li>
+                                        <li>
+                                            <strong><% if (count_administrator) { %><%= count_administrator %><% } else { %>0<% } %></strong> Quản trị viên</li>
+                                        <li>
+                                            <strong><% if (count_root) { %><%= count_root %><% } else { %>0<% } %></strong> Quản trị hệ thống
+                                            <span class="label label-danger">ROOT</span>
+                                        </li>
+                                    </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- end content -->
+            </div>
+            <section></section>
+            <!-- end section -->
+            <%- partial('./layouts/footer') %>

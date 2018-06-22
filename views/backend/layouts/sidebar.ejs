@@ -1,0 +1,97 @@
+<div id="wrapper_sidebar">
+    <div id="wrapper_brand">
+        <a href="<%= get_base_url_admin() %>/dashboard">Administrator</a>
+    </div>
+    <ul class="list-group" id="wrapper_menu">
+        <li>
+            <a href="<%= get_base_url_admin() %>/dashboard" class="list-group-item active  <% if(page_slug!=null && page_slug=='dashboard') { %> curent_page <% } %>">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;
+                <strong>Quản trị</strong>
+            </a>
+        </li>
+        <li>
+            <a href="<%= get_base_url_admin() %>/words/page/1" class="list-group-item active">
+                <i class="fa fa-tags" aria-hidden="true"></i>&nbsp;
+                <strong>Từ vựng</strong>
+            </a>
+        </li>
+        <li>
+            <a href="<%= get_base_url_admin() %>/words/page/1" class="list-group-item <% if(page_slug!=null && page_slug=='words') { %> curent_page <% } %> ">Tất cả từ vựng</a>
+        </li>
+        <li>
+            <a href="<%= get_base_url_admin() %>/word/create" class="list-group-item <% if(page_slug!=null && page_slug=='create_word') { %> curent_page <% } %> ">Thêm mới</a>
+        </li>
+        <li>
+            <a href="#" class="list-group-item active">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+                <strong>Mẫu Email trao đổi công việc</strong>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="list-group-item">Tất cả mẫu Email</a>
+        </li>
+        <li>
+            <a href="#" class="list-group-item">Thêm mới mẫu Email</a>
+        </li>
+        <li>
+            <a href="#" class="list-group-item">Nhóm</a>
+        </li>
+        <li>
+            <a href="<%= get_base_url_admin() %>/approvals/page/1" class="list-group-item active  <% if(page_slug!=null && (page_slug=='approvals' || page_slug=='edit_approval')) { %> curent_page <% } %> ">
+                <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;
+                <strong>Duyệt từ mới</strong>
+               
+            </a>
+        </li>
+        <li>
+            <a href="#" class="list-group-item active">
+                <i class="fa fa-comments" aria-hidden="true"></i>&nbsp;
+                <strong>Góp ý</strong>
+                
+            </a>
+        </li>
+        <li> <a href="<%= get_base_url_admin() %>/feedbacks_kanji/page/1" class="list-group-item  <% if(page_slug!=null && (page_slug=='feedbacks_kanji' || page_slug=='feedbacks_edit_kanji')) { %> curent_page <% } %>">Chỉnh sửa Kanji</a></li>
+        <li> <a href="<%= get_base_url_admin() %>/feedbacks_hiragana/page/1" class="list-group-item  <% if(page_slug!=null && (page_slug=='feedbacks_hiragana' || page_slug=='feedbacks_edit_hiragana')) { %> curent_page <% } %>">Chỉnh sửa Hiragana</a> </li>
+        <li> <a href="<%= get_base_url_admin() %>/feedbacks_katakana/page/1" class="list-group-item  <% if(page_slug!=null && (page_slug=='feedbacks_katakana' || page_slug=='feedbacks_edit_katakana')) { %> curent_page <% } %>">Chỉnh sửa Katakana</a> </li>
+        <li> <a href="<%= get_base_url_admin() %>/feedbacks_romaji/page/1" class="list-group-item  <% if(page_slug!=null && (page_slug=='feedbacks_romaji' || page_slug=='feedbacks_edit_romaji')) { %> curent_page <% } %>">Chỉnh sửa Romaji</a> </li>
+       
+        <li>
+            <a href="<%= get_base_url_admin() %>/feedbacks_mean/page/1" class="list-group-item   <% if(page_slug!=null && (page_slug=='feedbacks_mean' || page_slug=='feedbacks_edit_mean')) { %> curent_page <% } %> ">Thêm & sửa Ý nghĩa</a>
+        </li>
+       
+        <li>
+            <a href="<%= get_base_url_admin() %>/feedbacks_example/page/1" class="list-group-item  <% if(page_slug!=null && (page_slug=='feedbacks_example' || page_slug=='feedbacks_edit_example')) { %> curent_page <% } %>">Thêm & sửa Ví dụ</a>
+        </li>
+       
+        <li>
+            <a href="<%= get_base_url_admin() %>/users/page/1" class="list-group-item active">
+                <i class="fa fa-users" aria-hidden="true"></i>&nbsp;
+                <strong>Người dùng</strong>
+            </a>
+        </li>
+        <li>
+            <a href="<%= get_base_url_admin() %>/users/page/1" class="list-group-item <% if(page_slug!=null && page_slug=='users') { %> curent_page <% } %> ">Tất cả người dùng</a>
+        </li>
+        <li>
+            <a href="<%= get_base_url_admin() %>/user/create" class="list-group-item <% if(page_slug!=null && page_slug=='create_user') { %> curent_page <% } %> ">Thêm mới</a>
+        </li>
+        <li>
+            <a href="<%= get_base_url_admin() %>/config" class="list-group-item active <% if(page_slug!=null && page_slug=='config') { %> curent_page <% } %>">
+                <i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;
+                <strong>Cấu hình</strong>
+            </a>
+        </li>
+        <li>
+            <a href="<%= get_base_url_admin() %>/feedback" class="list-group-item active <% if(page_slug!=null && page_slug=='feedback') { %> curent_page <% } %>">
+                    <i class="fa fa-heart" aria-hidden="true"></i>&nbsp;
+                <strong>Đóng góp & Phản hồi</strong>
+            </a>
+        </li>
+        <li>
+            <a href="<%= get_base_url_admin() %>/logout" class="list-group-item active" onClick="return confirm('Bạn chắc chắn đăng xuất?')">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;
+                <strong>Đăng xuất</strong>
+            </a>
+        </li>
+    </ul>
+</div>

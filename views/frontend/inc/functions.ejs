@@ -1,0 +1,77 @@
+<% 
+  get_type_word = (value)=>{
+    var result_type_word= 'N/A';
+    if(value=='N/A') { result_type_word = 'N/A'  }
+    if(value=='N') { result_type_word = 'Danh từ'  }
+    if(value=='EXP') { result_type_word = 'Cụm từ'  }
+    if(value=='N-PREP') { result_type_word = 'Danh từ hoặc giới từ'  }
+    if(value=='PREP') { result_type_word = 'Giới từ'  }
+    if(value=='ADJ') { result_type_word = 'Tính từ'  }
+    if(value=='EXC') { result_type_word = 'Thán từ'  }
+    if(value=='ADV') { result_type_word = 'Trạng từ'  }
+    if(value=='VERB-1') { result_type_word = 'Động từ nhóm I'  }
+    if(value=='VERB-2') { result_type_word = 'Động từ nhóm II'  }
+    if(value=='VERB-3') { result_type_word = 'Động từ nhóm III'  }
+    return result_type_word;
+  }
+
+  get_base_url = () => {
+    return sails.config.custom.base_url;
+  }
+
+  get_data_user = (session_me)=>{
+            if( session_me ){
+              var data_user_session = JSON.parse(session_me)
+              if(data_user_session!=null && data_user_session.length > 0){
+                      var data_user = {
+                        username:data_user_session[0].username,
+                        password:data_user_session[0].password,
+                        email:data_user_session[0].email,
+                        slug:data_user_session[0].slug,
+                        thumbnail:data_user_session[0].thumbnail,
+                        created_at:data_user_session[0].created_at,
+                        activation_key:data_user_session[0].activation_key,
+                        status:data_user_session[0].status,
+                        display_name:data_user_session[0].display_name,
+                        role:data_user_session[0].role,
+                        ip:data_user_session[0].ip,
+                        id:data_user_session[0].id,
+                      }
+                return data_user
+              }
+          }else{
+            return null
+          }
+  }
+
+
+  get_name_user=()=>{
+
+      if( get_data_user(req.session.me) != null ){
+        return  get_data_user(req.session.me).display_name
+      }else{
+        return null
+      }
+
+  }
+
+  get_id_user=()=>{
+
+    if( get_data_user(req.session.me) != null ){
+      return  get_data_user(req.session.me).id
+    }else{
+      return null
+    }
+ }
+
+  
+ get_role_user=()=>{
+
+  if( get_data_user(req.session.me) != null ){
+    return  get_data_user(req.session.me).role
+  }else{
+    return 0
+  }
+}
+
+%>
